@@ -1,0 +1,77 @@
+sylius_grid:
+    grids:
+        owl_admin_company:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.company.class%"
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    enabled: false
+                    sortable: ~
+                name:
+                    type: string
+                    label: owl.ui.name
+                    sortable: ~
+                city:
+                    type: string
+                    label: owl.ui.city
+                    sortable: ~
+                street:
+                    type: string
+                    label: owl.ui.street
+                    sortable: ~
+                nip:
+                    type: string
+                    label: owl.ui.nip
+                    sortable: ~
+                phone:
+                    type: string
+                    label: owl.ui.phone
+                    sortable: ~
+                email:
+                    type: string
+                    label: owl.ui.email
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [name, nip, city, street, postCode, phone, email]
+            actions:
+                main:
+                    create:
+                        type: modal
+                        label: owl.ui.create
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_company_create
+                item:
+                    show:
+                        type: show
+                        label: owl.ui.show
+                        options:
+                            button: default
+                            icon: edit
+                            link:
+                                route: owl_admin_company_show_details
+                                parameters:
+                                    id: resource.id
+                    update:
+                        type: modal
+                        label: owl.ui.edit
+                        options:
+                            button: default
+                            icon: edit
+                            link:
+                                route: owl_admin_company_update
+                                parameters:
+                                    id: resource.id
+                    delete:
+                        type: delete

@@ -1,0 +1,47 @@
+sylius_grid:
+    grids:
+        owl_admin_equipment_category:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment_category.class%"
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    enabled: false
+                    sortable: ~
+                name:
+                    type: string
+                    label: owl.ui.name
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [id, name]
+            actions:
+                main:
+                    create:
+                        type: modal
+                        label: owl.ui.create
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_equipment_category_create
+                item:
+                    update:
+                        type: modal
+                        label: owl.ui.edit
+                        options:
+                            button: default
+                            icon: edit
+                            link:
+                                route: owl_admin_equipment_category_update
+                                parameters:
+                                    id: resource.id
+                    delete:
+                        type: delete

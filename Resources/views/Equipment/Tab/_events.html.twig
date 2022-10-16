@@ -1,0 +1,11 @@
+{% form_theme form '@OwlAdmin/Form/theme.html.twig' %}
+
+<div class="ui tab" data-tab="events">
+    <h3 class="ui top attached header">{{ 'owl.ui.event_equipment'|trans }}</h3>
+
+    <div class="ui attached segment">
+        {{ form_widget(form.events) }}
+
+        {{ sylius_template_event(['owl.admin.equipment.' ~ action ~ '.tab_events', 'owl.admin.equipment.tab_events'], {'form': form}) }}
+    </div>
+</div>

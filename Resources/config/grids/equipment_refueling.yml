@@ -1,0 +1,56 @@
+sylius_grid:
+    grids:
+        owl_admin_equipment_refueling:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment_refueling.class%"
+                    repository:
+                        method: findForEquipment
+                        arguments:
+                            id: $id
+            sorting:
+                date: desc
+            fields:
+                user:
+                    type: twig
+                    label: owl.ui.user
+                    sortable: user.firstName
+                    options:
+                        template: "@OwlUi/Grid/Field/owner.html.twig"
+                date:
+                    type: datetime
+                    label: owl.ui.date
+                    sortable: ~
+                    options:
+                        format: d-m-Y
+                mileage:
+                    type: twig
+                    label: owl.ui.mileage_equipment
+                    options:
+                        template: "@OwlAdmin/Grid/Field/int.html.twig"
+                quantity:
+                    type: twig
+                    label: owl.ui.quantity_equipment
+                    options:
+                        template: "@OwlAdmin/Grid/Field/float.html.twig"
+                value:
+                    type: twig
+                    label: owl.ui.value_equipment
+                    options:
+                        template: "@OwlAdmin/Grid/Field/money.html.twig"
+                comment:
+                    type: string
+                    label: owl.ui.comment
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [comment, user.firstName, user.lastName, user.displayName]
+                date:
+                    type: date
+                    label: owl.ui.date_refueling
+                    options:
+                        field: date
+                        inclusive_to: true

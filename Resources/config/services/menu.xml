@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="owl.admin.menu.listener.equipment_addon.refueling" class="Owl\Bundle\AdminBundle\EventListener\EquipmentRefuelingMenuListener">
+            <tag name="owl.equipment.listener.addon_menu" category-code="transport" priority="256" />
+        </service>
+
+        <service id="owl.admin.menu.listener.equipment_addon.event" class="Owl\Bundle\AdminBundle\EventListener\EquipmentEventMenuListener">
+            <tag name="owl.equipment.listener.addon_menu" category-code="all" priority="256"/>
+        </service>
+
+        <service id="owl.admin.menu_builder.main" class="Owl\Bundle\AdminBundle\Menu\MainMenuBuilder">
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.main" />
+        </service>
+
+        <service id="owl.admin.menu_builder.equipment_show" class="Owl\Bundle\AdminBundle\Menu\EquipmentShowMenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="owl.equipment_category_code_provider" />
+            <argument>%owl.admin.menu.equipment_addon.events%</argument>
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.equipment_show" />
+        </service>
+
+        <service id="owl.admin.menu_builder.equipment_form" class="Owl\Bundle\AdminBundle\Menu\EquipmentFormMenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.equipment_form" />
+        </service>
+
+        <service id="owl.admin.menu_builder.equipment_grid_addon" class="Owl\Bundle\AdminBundle\Menu\EquipmentGridAddOnMenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="owl.equipment_category_code_provider" />
+            <argument>%owl.admin.menu.equipment_addon.events%</argument>
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.equipment_grid_addon" />
+        </service>
+
+        <service id="owl.admin.menu_builder.notification_form" class="Owl\Bundle\AdminBundle\Menu\NotificationFormMenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.notification_form" />
+        </service>
+
+        <service id="owl.admin.menu_builder.company.show" class="Owl\Bundle\AdminBundle\Menu\CompanyShowMenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="event_dispatcher" />
+            <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.company.show" />
+        </service>
+    </services>
+</container>

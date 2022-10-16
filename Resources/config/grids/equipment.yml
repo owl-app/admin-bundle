@@ -1,0 +1,224 @@
+sylius_grid:
+    grids:
+        owl_admin_equipment:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment.class%"
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    enabled: false
+                    sortable: ~
+                name:
+                    type: string
+                    label: owl.ui.name
+                    sortable: ~
+                user:
+                    type: twig
+                    label: owl.ui.user
+                    sortable: user.firstName
+                    options:
+                        template: "@OwlUi/Grid/Field/owner.html.twig"
+                company:
+                    type: twig
+                    label: owl.ui.company
+                    sortable: company.name
+                    options:
+                        template: "@OwlAdmin/Grid/Field/company.html.twig"
+                category:
+                    type: string
+                    label: owl.ui.category
+                    path: category.name
+                    sortable: category.name
+                symbol:
+                    type: string
+                    label: owl.ui.symbol
+                    sortable: ~
+                price:
+                    type: twig
+                    label: owl.ui.price
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@OwlAdmin/Equipment/Grid/Field/price.html.twig"
+                other:
+                    type: string
+                    label: owl.ui.other
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [
+                            name,
+                            symbol,
+                            unit,
+                            price,
+                            category.name,
+                            attributes.text,
+                            attributes.boolean,
+                            attributes.integer,
+                            attributes.float,
+                            attributes.datetime,
+                            attributes.date
+                        ]
+                user:
+                    type: string
+                    form_options:
+                        type: contains
+                    label: owl.ui.user
+                    options:
+                        fields: [user.email, user.firstName, user.lastName]
+                company:
+                    type: string
+                    form_options:
+                        type: contains
+                    label: owl.ui.company
+                    options:
+                        fields: [company.name, company.email, company.nip]
+            actions:
+                main:
+                    create:
+                        type: create
+                        label: owl.ui.create
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_equipment_create
+                    category:
+                        type: custom
+                        label: owl.ui.categories
+                        options:
+                            icon: list
+                            button: blue
+                            link:
+                                route: owl_admin_equipment_category_index
+                item:
+                    show:
+                        type: show
+                        label: owl.ui.show
+                        options:
+                            button: default
+                            icon: search
+                            link:
+                                route: owl_admin_equipment_show_details
+                                parameters:
+                                    id: resource.id
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                subitem:
+                    addon:
+                        type: equipment_menu
+                        options:
+                            menu: addon
+                            order: ['equipment_refuelings', 'equipment_events']
+                            parameters:
+                                id: resource.id
+                                category: resource.category
+
+        owl_admin_equipment_by_company:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment.class%"
+                    repository:
+                        method: findByCompany
+                        arguments:
+                            id: $id
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    enabled: false
+                    sortable: ~
+                name:
+                    type: string
+                    label: owl.ui.name
+                    sortable: ~
+                user:
+                    type: twig
+                    label: owl.ui.user
+                    sortable: user.firstName
+                    options:
+                        template: "@OwlUi/Grid/Field/owner.html.twig"
+                category:
+                    type: string
+                    label: owl.ui.category
+                    path: category.name
+                    sortable: category.name
+                symbol:
+                    type: string
+                    label: owl.ui.symbol
+                    sortable: ~
+                price:
+                    type: twig
+                    label: owl.ui.price
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@OwlAdmin/Equipment/Grid/Field/price.html.twig"
+                other:
+                    type: string
+                    label: owl.ui.other
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [name, symbol, unit, price, category.name]
+                user:
+                    type: string
+                    form_options:
+                        type: contains
+                    label: owl.ui.user
+                    options:
+                        fields: [user.email, user.firstName, user.lastName]
+                company:
+                    type: string
+                    form_options:
+                        type: contains
+                    label: owl.ui.company
+                    options:
+                        fields: [company.name, company.email, company.nip]
+            actions:
+                main:
+                    create:
+                        type: create
+                        label: owl.ui.create
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_equipment_create
+                    category:
+                        type: custom
+                        label: owl.ui.categories
+                        options:
+                            icon: list
+                            button: blue
+                            link:
+                                route: owl_admin_equipment_category_index
+                item:
+                    show:
+                        type: modal
+                        label: owl.ui.show
+                        options:
+                            button: default
+                            icon: search
+                            link:
+                                route: owl_admin_equipment_show_details
+                                parameters:
+                                    id: resource.id
+                    update:
+                        type: update
+                    delete:
+                        type: delete

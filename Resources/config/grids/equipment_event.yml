@@ -1,0 +1,60 @@
+sylius_grid:
+    grids:
+        owl_admin_equipment_event:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment_event.class%"
+                    repository:
+                        method: findForEquipment
+                        arguments:
+                            id: $id
+            sorting:
+                date: desc
+            fields:
+                date:
+                    type: datetime
+                    label: owl.ui.date
+                    sortable: ~
+                    options:
+                        format: d-m-Y
+                date_notify:
+                    type: datetime
+                    label: owl.ui.date_notify
+                    sortable: ~
+                    options:
+                        format: d-m-Y
+                user:
+                    type: twig
+                    label: owl.ui.user
+                    sortable: user.firstName
+                    options:
+                        template: "@OwlUi/Grid/Field/owner.html.twig"
+                description:
+                    type: string
+                    label: owl.ui.description
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [description, user.firstName, user.lastName, user.displayName]
+                date:
+                    type: date
+                    label: owl.ui.date_event
+                    options:
+                        field: date
+                        inclusive_to: true
+            actions:
+                item:
+                    update:
+                        type: modal
+                        label: owl.ui.edit
+                        options:
+                            button: default
+                            icon: edit
+                            link:
+                                route: owl_admin_equipment_event_update
+                                parameters:
+                                    id: resource.equipment.id
+                                    eventId: resource.id

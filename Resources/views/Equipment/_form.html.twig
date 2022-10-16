@@ -1,0 +1,14 @@
+<div class="ui two column grid">
+    <div class="column">
+        {{ form_row(form.name) }}
+        {{ form_row(form.symbol) }}
+        {{ form_row(form.unit) }}
+        {{ form_row(form.price) }}
+    </div>
+    <div class="column">
+        {{ form_row(form.user) }}
+        {{ form_row(form.company) }}
+        {{ form_row(form.category, {'attr': { 'data-action-attributes' : path('owl_admin_ajax_equipment_attributes_by_category')}}) }}
+        {{ form_row(form.other) }}
+    </div>
+</div>

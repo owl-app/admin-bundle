@@ -1,0 +1,57 @@
+{% extends '@OwlAdmin/Form/theme.html.twig' %}
+
+{% block collection_widget -%}
+    {% import _self as self %}
+
+    <div>
+        {% set attributes = {} %}
+
+        {% for child in form %}
+            {% set code = child.vars.data.attribute.code %}
+            {% set id = child.vars.data.attribute.id %}
+
+            {% if attributes[code~ '_' ~ id] is not defined %}
+                {% set attributes = attributes|merge({ (code ~ '_' ~ id): [] }) %}
+
+            {% endif %}
+
+            {% set attributes = attributes|merge({ (code~ '_' ~ id): { code: code, value: attributes[code~ '_' ~ id]|merge([child])} }) %}
+        {% endfor %}
+
+        {% for key, attribute in attributes %}
+            <div class="attributes-group" data-attribute-code="{{ attribute.code }}">
+                <div class="attributes-header">
+                    <strong>{{ attribute.value[0].value.vars.label }}</strong>
+                    <div>
+                        <button class="ui basic red labeled icon button" data-attribute="delete">
+                            <i class="remove icon"></i>{{ 'owl.ui.delete'|trans }}
+                        </button>
+                    </div>
+                </div>
+                <div class="attributes-list">
+                    {% for child in attribute.value %}
+                        {{ self.collection_item(child) }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{%- endblock collection_widget %}
+
+{% macro collection_item(form) %}
+    {% import '@OwlUi/Macro/flags.html.twig' as flags %}
+
+    <div class="attribute" data-id="{{ form.vars.data.attribute.code }}">
+        <div class="attribute-row">
+            <div class="attribute-input">
+                <div {{ 'checkbox' in form.children.value.vars.block_prefixes ? 'class="ui toggle checkbox"' : '' }}>
+                    {{ form_widget(form.value) }}
+                </div>
+            </div>
+            <div class="attribute-error">
+                {{ form_errors(form.value) }}
+            </div>
+        </div>
+        <input type="hidden" name="{{ form.attribute.vars.full_name }}" id="{{ form.attribute.vars.id }}" value="{{ form.vars.data.attribute.code }}"/>
+    </div>
+{% endmacro %}

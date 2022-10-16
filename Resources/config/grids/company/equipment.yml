@@ -1,0 +1,90 @@
+sylius_grid:
+    grids:
+        owl_admin_equipment_role_company:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.equipment.class%"
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    enabled: false
+                    sortable: ~
+                name:
+                    type: string
+                    label: owl.ui.name
+                    sortable: ~
+                category:
+                    type: string
+                    label: owl.ui.category
+                    path: category.name
+                    sortable: category.name
+                symbol:
+                    type: string
+                    label: owl.ui.symbol
+                    sortable: ~
+                unit:
+                    type: string
+                    label: owl.ui.unit
+                    sortable: ~
+                price:
+                    type: string
+                    label: owl.ui.price
+                    sortable: ~
+                other:
+                    type: string
+                    label: owl.ui.other
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [
+                            name,
+                            symbol,
+                            unit,
+                            price,
+                            category.name,
+                            attributes.text,
+                            attributes.boolean,
+                            attributes.integer,
+                            attributes.float,
+                            attributes.datetime,
+                            attributes.date
+                        ]
+            actions:
+                main:
+                    create:
+                        type: modal
+                        label: owl.ui.create
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_equipment_create
+                    category:
+                        type: custom
+                        label: owl.ui.categories
+                        options:
+                            icon: list
+                            button: blue
+                            link:
+                                route: owl_admin_equipment_category_index
+                item:
+                    show:
+                        type: modal
+                        label: owl.ui.show
+                        options:
+                            button: default
+                            icon: search
+                            link:
+                                route: owl_admin_equipment_show_details
+                                parameters:
+                                    id: resource.id
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,67 @@
+sylius_grid:
+    grids:
+        owl_admin_admin_user_role_company:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%owl.model.admin_user.class%"
+            sorting:
+                createdAt: desc
+            fields:
+                displayName:
+                    type: string
+                    label: owl.ui.user_display_name
+                    sortable: ~
+                email:
+                    type: string
+                    label: owl.ui.email
+                    sortable: ~
+                role:
+                    type: string
+                    label: owl.ui.role
+                    path: role.name
+                    sortable: ~
+                note:
+                    type: string
+                    label: owl.ui.note_user
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    label: owl.ui.created_at
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+            filters:
+                search:
+                    type: string
+                    label: owl.ui.search
+                    options:
+                        fields: [email, displayName, phone, firstName, lastName]
+                enabled:
+                    type: boolean
+                    label: owl.ui.enabled
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                    assign_permissions:
+                        type: link
+                        label: owl.ui.assign_permissions
+                        options:
+                            button: primary
+                            icon: plus
+                            link:
+                                route: owl_admin_admin_user_permission_availables
+                                parameters:
+                                    id: resource.id
+                bulk:
+                    delete:
+                        type: delete
+                        options:
+                            link:
+                                route: owl_admin_admin_user_bulk_delete

@@ -1,0 +1,65 @@
+{% extends '@OwlUi/Form/theme.html.twig' %}
+
+{% block _owl_equipment_attribute_configuration_choices_entry_widget %}
+    {% for item in form %}
+    <div class="ui teal segment" style="padding: 1em 1em;">
+        <label style="margin-bottom: 8px;">{{ ('owl.ui.' ~ item.vars.name)|trans }} </label>
+        <div class="content">
+            {{ form_widget(item) }}
+            {{- form_errors(form) -}}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block _owl_equipment_events_entry_widget %}
+    <div class="ui teal segment" style="padding: 1em 1em;">
+        <div class="fields">
+            {{ form_row(form.date, {row_attr: { wrap_field_classes: 'three wide' }} ) }}
+            {{ form_row(form.description, {row_attr: { wrap_field_classes: 'thirteen wide' }} ) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _owl_equipment_refuelings_entry_widget %}
+    <div class="ui teal segment" style="padding: 1em 1em;">
+        <div class="fields">
+            {{ form_row(form.date, {row_attr: { wrap_field_classes: 'four wide' }} ) }}
+            {{ form_row(form.mileage, {row_attr: { wrap_field_classes: 'four wide' }} ) }}
+            {{ form_row(form.quantity, {row_attr: { wrap_field_classes: 'four wide' }} ) }}
+            {{ form_row(form.value, {row_attr: { wrap_field_classes: 'four wide' }} ) }}
+        </div>
+        {{ form_row(form.comment) }}
+    </div>
+{% endblock %}
+
+{% block owl_city_autocomplete_choice_row %}
+    {{ form_row(form, {'remote_url': path('owl_admin_ajax_city_by_name_phrase'), 'load_edit_url': path('owl_admin_ajax_city_by_id')}) }}
+{% endblock %}
+
+{% block owl_equipment_autocomplete_choice_row %}
+    {{ 
+        form_row(form, {
+            'remote_url': path('owl_admin_ajax_equipment_by_name_phrase'), 
+            'load_edit_url': '',
+            'event': 'product',
+            'extra_data': 'name, symbol'
+        }) 
+    }}
+{% endblock %}
+
+{% block owl_grid_filter_location_row %}
+    {% import '@OwlUi/Macro/autocomplete.html.twig' as autocomplete %}
+
+    {{ 
+        form_row(form.city, {
+            'remote_url': path('owl_admin_ajax_city_by_name_phrase'), 
+            'load_edit_url': '',
+            extra_fields: autocomplete.extra_fields_autocompletet(form, extra_fields)
+        }) 
+    }}
+{% endblock %}
+
+{% block sylius_product_autocomplete_choice_row %}
+    {{ form_row(form, {'remote_url': path('sylius_admin_ajax_product_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_product_by_code')}) }}
+{% endblock %}

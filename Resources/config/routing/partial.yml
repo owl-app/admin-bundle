@@ -1,0 +1,7 @@
+owl_admin_partial_equipment:
+    resource: "@OwlAdminBundle/Resources/config/routing/partial/equipment.yml"
+    prefix: /equipments
+
+owl_admin_partial_admin_user:
+    resource: "@OwlAdminBundle/Resources/config/routing/partial/admin_user.yml"
+    prefix: /users

@@ -1,0 +1,12 @@
+<div class="ui labeled icon top right floating dropdown button primary link">
+    <i class="plus icon"></i>
+    <span class="text">{{ 'owl.ui.create'|trans }}</span>
+    <div class="menu">
+        <div class="header">
+            <i class="cube icon"></i>
+            {{ 'owl.ui.type'|trans }}
+        </div>
+        <div class="divider"></div>
+        {{ render(url('owl_admin_get_attribute_types')) }}
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{% set tab = configuration.vars.tab|default('details') %}
+{% set order_menu = configuration.vars.order_menu|default({}) %}
+
+<div class="content">
+    {% set menu = knp_menu_get('owl.admin.equipment_show', [], {'equipment': equipment, 'order_menu': order_menu}) %}
+    {{ knp_menu_render(menu, {'template': '@OwlAdmin/Crud/_menu_with_links.html.twig', 'context': _context, 'activeTab': tab}) }}
+</div>

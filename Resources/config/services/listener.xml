@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ This file is part of the Sylius package.
+
+ (c) Paweł Jędrzejewski
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+-->
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="owl.listener.admin_user_registration" class="Owl\Bundle\AdminBundle\EventListener\UserRegistrationListener">
+            <argument type="service" id="owl.admin_user.token_generator.email_verification" />
+            <argument type="service" id="event_dispatcher" />
+            <tag name="kernel.event_listener" event="owl.admin_user.post_register" method="handleUserVerification" />
+        </service>
+    </services>
+</container>

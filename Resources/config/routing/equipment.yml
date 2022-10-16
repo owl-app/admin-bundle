@@ -1,0 +1,117 @@
+owl_admin_equipment_category:
+    resource: "@OwlAdminBundle/Resources/config/routing/equipment/category.yml"
+    prefix: /equipments/categories/
+
+owl_admin_equipment_file:
+    resource: "@OwlAdminBundle/Resources/config/routing/equipment/file.yml"
+    prefix: /equipments/{equipmentId}/files/
+
+owl_admin_equipment_refueling:
+    resource: "@OwlAdminBundle/Resources/config/routing/equipment/refueling.yml"
+    prefix: equipments/{id}/reufuelings/
+
+owl_admin_equipment_event:
+    resource: "@OwlAdminBundle/Resources/config/routing/equipment/event.yml"
+    prefix: equipments/{id}/events/
+
+owl_admin_equipment:
+    resource: |
+        alias: owl.equipment
+        section: admin
+        templates: "@OwlAdmin\\Crud"
+        except: ['index', 'show', 'create']
+        permission: true
+        vars:
+            all:
+                subheader: owl.ui.manage_equipments
+                redirect:
+                    optional_referer: owl_admin_equipment_index
+            update:
+                form:
+                    ajax: true
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/Equipment/_update.html.twig"
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.update_equipment
+            delete:
+                redirect:
+                    header: xhr
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.delete_equipment
+    type: sylius.resource
+
+owl_admin_equipment_index:
+    path: /equipments/
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment
+            template: "@OwlAdmin/Crud/index.html.twig"
+            vars:
+                subheader: owl.ui.manage_equipments
+                icon: boxes
+                referer: true
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.list_equipments
+
+owl_admin_equipment_create:
+    path: /equipments/new
+    methods: [GET,POST]
+    defaults:
+        _controller: owl.controller.equipment:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/create.html.twig"
+            vars:
+                form:
+                    ajax: true
+                serialization_groups: [AjaxShow]
+                tinymce: true
+                templates:
+                    form: "@OwlAdmin/Equipment/_create.html.twig"
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.create_equipment
+
+owl_admin_equipment_show_details:
+    path: /equipments/{id}
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment:showAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Equipment/show.html.twig"
+            vars:
+                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.show_equipment
+
+owl_admin_equipment_show_history_index:
+    path: /equipments/{id}/history
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.equipment.history_equipment_location
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment_history
+            template: "@OwlAdmin/Equipment/show.html.twig"
+            vars:
+                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                tab: history_equipment
+                referer: true
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.show_equipment_history_list
+
+

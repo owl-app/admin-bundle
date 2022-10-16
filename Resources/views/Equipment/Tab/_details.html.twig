@@ -1,0 +1,8 @@
+<div class="ui active tab" data-tab="details">
+    <h3 class="ui top attached header">{{ 'owl.ui.details'|trans }}</h3>
+
+    <div class="ui attached segment">
+        {% include '@OwlAdmin/Equipment/_form.html.twig' %}
+        {{ sylius_template_event(['owl.admin.equipment.' ~ action ~ '.tab_details', 'owl.admin.equipment.tab_details'], {'form': form}) }}
+    </div>
+</div>

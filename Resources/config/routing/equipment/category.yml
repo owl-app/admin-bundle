@@ -1,0 +1,85 @@
+owl_admin_equipment_category:
+    resource: |
+        alias: owl.equipment_category
+        section: admin
+        path: /
+        templates: "@OwlAdmin\\Crud"
+        only: ['delete']
+        permission: true
+        vars:
+            delete:
+                redirect:
+                    header: xhr
+                form:
+                    ajax: true
+                permission:
+                    group: equipment_category
+                    description: owl.ui.permission.delete_category
+    type: sylius.resource
+
+owl_admin_equipment_category_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_category:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment_category
+            template: "@OwlAdmin/Category/index.html.twig"
+            vars:
+                subject: equipment
+                subheader: owl.ui.manage_equipment_category
+                icon: boxes
+                referer: true
+                permission:
+                    group: equipment_category
+                    description: owl.ui.permission.list_category
+
+owl_admin_equipment_category_create:
+    path: /new
+    methods: [GET,POST]
+    defaults:
+        _controller: owl.controller.equipment_category:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/create.html.twig"
+            vars:
+                redirect:
+                    save:
+                        route: owl_admin_equipment_category_index
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                permission:
+                    group: equipment_category
+                    description: owl.ui.permission.create_category
+
+owl_admin_equipment_category_update:
+    path: /{id}/update
+    methods: [GET,PUT]
+    defaults:
+        _controller: owl.controller.equipment_category:updateAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/update.html.twig"
+            vars:
+                redirect:
+                    save:
+                        route: owl_admin_equipment_category_index
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                route:
+                    parameters:
+                        equipmentId: $equipmentId
+                        id: $id
+                permission:
+                    group: equipment_category
+                    description: owl.ui.permission.update_category

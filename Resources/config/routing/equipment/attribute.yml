@@ -1,0 +1,91 @@
+owl_admin_equipment_attribute:
+    resource: |
+        alias: owl.equipment_attribute
+        section: admin
+        templates: "@OwlAdmin\\Crud"
+        except: ['show', 'create']
+        redirect: update
+        grid: owl_admin_equipment_attribute
+        permission: true
+        vars:
+            all:
+                subheader: owl.ui.manage_attributes_of_your_equipments
+                templates:
+                    form: "@OwlAdmin/EquipmentAttribute/_form.html.twig"
+            index:
+                icon: cubes
+                referer: true
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.list_equipment_attributes
+            update:
+                form:
+                    ajax: true
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/EquipmentAttribute/_form.html.twig"
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.update_equipment_attribute
+            delete:
+                redirect:
+                    header: xhr
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.delete_equipment_attribute
+    type: sylius.resource
+
+owl_admin_equipment_attribute_create:
+    path: /product-attributes/{type}/new
+    methods: [GET, POST]
+    defaults:
+        _controller: owl.controller.equipment_attribute:createAction
+        _sylius:
+            section: admin
+            factory:
+                method: createTyped
+                arguments:
+                    type: $type
+            template: "@OwlAdmin/Crud/create.html.twig"
+            permission: true
+            vars:
+                form:
+                    ajax: true
+                serialization_groups: [AjaxShow]
+                subheader: owl.ui.manage_attributes_of_your_equipments
+                templates:
+                    form: "@OwlAdmin/EquipmentAttribute/_form.html.twig"
+                route:
+                    parameters:
+                        type: $type
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.create_equipment_attribute
+
+owl_admin_get_attribute_types:
+    path: /attribute-types
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_attribute:getAttributeTypesAction
+        template: "@OwlAdmin/EquipmentAttribute/Types/attributeTypes.html.twig"
+
+owl_admin_get_equipment_attributes:
+    path: /attributes
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_attribute:renderAttributesAction
+        template: "@OwlAdmin/Equipment/Attribute/attributeChoice.html.twig"
+
+owl_admin_render_attribute_forms:
+    path: /attribute-forms
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_attribute:renderAttributeValueFormsAction
+        template: "@OwlAdmin/Equipment/Attribute/attributeValues.html.twig"
+        _sylius:
+            section: admin
+            permission: true
+            vars:
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.equipment_attribute_forms

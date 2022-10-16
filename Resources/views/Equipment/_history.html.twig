@@ -1,0 +1,46 @@
+{% import '@OwlUi/Macro/messages.html.twig' as messages %}
+
+{% if resources|length > 0 %}
+<table class="ui sortable stackable very basic celled table">
+    <thead>
+        <tr>
+            <th>
+                {{ 'owl.ui.action'|trans }}
+            </th>
+            <th>
+                {{ 'owl.ui.actual_name_location'|trans }}
+            </th>
+            <th>
+                {{ 'owl.ui.old_name_location'|trans }}
+            </th>
+            <th>
+                {{ 'owl.ui.date_created'|trans }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for model in resources %}
+        <tr class="item">
+            <td>
+                {% include '@OwlAdmin/HistoryEquipment/List/Field/action.html.twig' with {'action': model.action} %}
+            </td>
+            <td>
+                {% if model.location is not null %}
+                    {{ model.location.name }}
+                {% else %}
+                    Brak
+                {% endif %}
+            </td>
+            <td>
+                {{ model.nameLocation }}
+            </td>
+            <td>
+                {{ model.createdAt|format_datetime }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    {{ messages.info('owl.ui.no_results_to_display') }}
+{% endif %}

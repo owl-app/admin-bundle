@@ -1,0 +1,187 @@
+owl:
+    email:
+        password_reset:
+            hello: Witaj
+            reset_your_password: Zresetuj swoje hasło
+            subject: Resetowanie hasła
+            to_reset_your_password: Aby zresetować hasło - kliknij na poniższy link
+        user_registration:
+            start_inventory_of_equipment: Rozpocznij ewidencję wyposażenia
+            subject: Rejestracja użytkownika
+            welcome_to_our_system: Zapraszamy do naszego systemu ewidencji!
+            you_have_just_been_registered: Właśnie zostałeś zarejestrowany. Dziękujęmy
+        verification_token:
+            hello: Witaj
+            subject: Weryfikacja adresu e-mail
+            to_verify_your_email_address: Aby zweryfikować swój adres e-mail - kliknij poniższy link
+            verify_your_email_address: Zweryfikuj swój adres email
+        registration_accepted:
+            subject: Akceptacja konta w systemie Ewidencji
+            thank_you_for_your_patience: Dziękujemy za cierpliwość
+            you_have_just_been_accepted: Twoje konto zostało właśnie zaakceptowane
+            start_using_system: Zacznij w pełni korzystać z możliwości systemu Ewidencji
+        registration_rejected:
+            subject: Odrzucenie rejestracji w systemie Ewidencji
+            thank_you_for_your_patience: Dziękujemy za cierpliwość
+            your_registration_to_email_address: Twoja rejestracja na adres e-mail
+            in_system_has_unfortunately_been_rejected: w systemie Ewidencji została niestety odrzucona
+            reason_for_rejection: Powód odrzucenia
+        equipment_event_notify:
+            subject: 'Zdarzenie do wyposażenia:'
+
+    menu:
+        admin:
+            main:
+                service:
+                    header: Wykonawcy
+                suggestion:
+                    header: Sugestie
+                company:
+                    header: Firmy
+                equipment:
+                    header: Wyposażenie
+                equipment_attribute:
+                    header: Atrybuty
+                location:
+                    header: Lokalizacje
+                mailbox:
+                    header: Poczta
+                notification:
+                    header: Komunikaty
+                catalog:
+                    association_types: Typy powiązań
+                    attributes: Atrybuty
+                    header: Katalog
+                    inventory: Zapasy
+                    options: Warianty
+                    products: Produkty
+                    taxons: Taksonomie
+                configuration:
+                    users: Użytkownicy
+                    settings: Ustawienia
+                    countries: Kraje
+                    header: Konfiguracja
+                    cities: Miasta
+                    locales: Języki
+                permission:
+                    header: 'Uprawnienia'
+                    available: 'Dostępne'
+                    roles: 'Role'
+    ui:
+        permission:
+            availables_roles: Dostępne role w systemie
+            service: Wykonawcy
+            list_services: Lista wykonawców
+            create_service: Dodawanie wykonawcy
+            update_service: Edycja wykonawcy
+            show_services: Widok wykonawcy
+            delete_service: Usuwanie wykonawcy
+            add_new_review: Dodawanie nowej oceny
+            city: Miasta
+            list_cities: Lista miast
+            create_city: Dodawanie miasta
+            update_city: Edycja miasta
+            rbac_permission_availables: Uprawnienia - dostępy
+            list_permission_availables_in_system: Lista dostępów w systemie
+            add_permission_to_system: Dodawanie uprawniania do systemu
+            remove_permission_to_system: Usuwanie uprawniania z systemu
+            rbac_permission_role: Uprawnienia - role
+            list_roles: Lista ról
+            create_role: Dodawanie roli
+            update_role: Edycja roli
+            delete_role: Usuwanie roli
+            list_permission_assigned_to_role: Lista uprawnień przypisanych do roli
+            add_permission_to_role: Dodawanie uprawnienia do roli
+            revoke_permission_to_role: Usuwanie uprawnienia do roli
+            user: Użytkownicy
+            list_users: Lista użytkowników
+            create_user: Dodawanie użytkownika
+            update_user: Edycja użytkownika
+            list_permissions_assign_to_user: Lista uprawnień przypisanych do użytkownika
+            assign_permission_to_user: Przypisywanie uprawnień do użytkownika
+            revoke_permission_to_user: Usuwanie uprawnienia użytkownika
+            get_city_by_name: Pobieranie mista po nazwie
+            get_city_by_id: Pobieranie miasta po id
+            locale: Ustawienia regionalne
+            list_locales: Lista języków
+            create_locale: Dodawanie języka
+            update_locale: Edycja języka
+            suggestion: Sugestie
+            list_suggestions: Lista sugestii
+            create_suggestion: Dodawanie sugestii
+            update_suggestion: Edycja sugestii
+            delete_suggestion: Usuwanie sugestii
+            show_suggestions: Widok sugestii
+            bulk_delete_suggestion: Usuwanie wielu sugestii
+            change_status_suggestion: Zmiana statusu sugestii
+            history_status_suggestion: Historia statusów sugestii
+            create_file: Dodawanie pliku
+            update_file: Edycja pliku
+            delete_file: Usuwanie pliku
+            change_status: Zmiana statusu
+            company: Firmy
+            list_companies: Lista firm
+            show_company: "Szczegóły firmy: Dane"
+            show_company_locations: "Szczegóły firmy: Lokalizacje"
+            show_company_equipments: "Szczegóły firmy: Wyposażenie"
+            show_user_equipments: "Szczegóły firmy: Użytkownicy"
+            create_company: Dodawanie firmy
+            update_company: Edycja firmy
+            delete_company: Usuwanie firmy
+            equipment: Wyposażenie
+            list_equipments: Lista wyposażenia
+            show_equipment: Widok wyposażenia
+            create_equipment: Dodawanie wyposażenia
+            update_equipment: Edycja wyposażenia
+            delete_equipment: Usuwanie wyposażenia
+            get_equipment_by_name: Wyszukiwanie wyposażenia po nazwie
+            history_equipment: Historia wyposażenia w widoku
+            location: Lokalizacje
+            list_locations: Lista lokalizacji
+            show_location: Widok lokalizacji
+            create_location: Dodawanie lokalizacji
+            update_location: Edycja lokalizacji
+            delete_location: Usuwanie lokalizacji
+            history_location: Historia lokalizacji w widoku
+            generate_pdf_locations: Generowanei PDF'a
+            generate_excel_locations: Generowanie Excel'a
+            equipment_category: Kategorie wyposażenia
+            location_category: Kategorie lokalizacji
+            list_category: Lista kategorii
+            create_category: Dodawanie kategorii
+            update_category: Edycja kategorii
+            delete_category: Kasowanie kategorii
+            mailbox: Poczta
+            update_mailbox: Edycja poczty
+            delete_mailbox: Kasowanie poczty
+            show_mailbox: Szczegóły poczty
+            list_mailboxes: Lista skrzynek pocztowych
+            create_mailbox: Dodawanie poczty
+            notification: Komunikaty
+            update_notification: Edycja komunikatu
+            delete_notification: Usuwanie komunikatu
+            show_notification: Szczegóły komunikatu
+            details_to_accept_notification: Szczegóły - akceptacja komunikatu
+            list_notifications: Lista komunikatów
+            create_notification: Dodawanie komunikatu
+            system_setting: Ustawienia systemu
+            edit_system_settings: Edycja ustawień systemu
+            registration: Rejestracja
+            reject_registration: Odrzucenie rejestracji
+            accept_registration: Akceptacja rejestracji
+            equipment_attribute: Wyposażenie - atrybuty
+            list_equipment_attributes: Lista atrybutów
+            create_equipment_attribute: Dodawanie atrybutu
+            update_equipment_attribute: Edycja atrybutu
+            delete_equipment_attribute: Usuwanie atrybutu
+            search_by_category_equipment_attribute: Wyszukiwanie po kategorii
+            equipment_attribute_forms: Dodawanie atrybutów do formularza
+            equipment_event: Lista zdarzeń
+            show_equipment_history_list: 'Szczegóły wyposażenia: Historia wyposażenia'
+            show_equipment_event_list: 'Szczegóły wyposażenia: Zdarzenia do wyposażenia'
+            show_equipment_refueling_list: 'Szczegóły wyposażenia: Tankowania'
+            create_refueling: Dodawanie tankowania
+            create_event: Dodawanie zdarzenia
+            update_event: Edycja zdarzenia
+
+

@@ -1,0 +1,14 @@
+{% form_theme form '@OwlAdmin/Equipment/Attribute/attributesCollection.html.twig' %}
+
+<div class="ui tab" data-tab="attributes">
+    <h3 class="ui top attached header">{{ 'owl.ui.attributes'|trans }}</h3>
+
+    <div class="ui attached segment">
+        {{ render(url('owl_admin_get_equipment_attributes', {'categoryId' : form.category.vars.value })) }}
+        <div id="attributesContainer" data-count="{{ form.attributes|length }}">
+            {{ form_widget(form.attributes) }}
+        </div>
+
+        {{ sylius_template_event(['sylius.admin.product.' ~ action ~ '.tab_attributes', 'sylius.admin.product.tab_attributes'], {'form': form}) }}
+    </div>
+</div>

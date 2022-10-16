@@ -1,0 +1,64 @@
+<div class="ui hidden divider"></div>
+<div id="details">
+    <h4 class="ui top attached large header">{{ 'owl.ui.details'|trans }}</h4>
+    <div class="ui attached segment">
+        <div>
+            <table class="ui very basic celled table">
+                <tbody>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.name'|trans }}</strong></td>
+                    <td>{{ company.name }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.nip'|trans }}</strong></td>
+                    <td>{{ company.nip }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.city'|trans }}</strong></td>
+                    <td>{{ company.city }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.street'|trans }}</strong></td>
+                    <td>{{ company.street }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.post_code'|trans }}</strong></td>
+                    <td>{{ company.postCode }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.phone'|trans }}</strong></td>
+                    <td>{{ company.phone }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.email'|trans }}</strong></td>
+                    <td>{{ company.email }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.trade'|trans }}</strong></td>
+                    <td>{{ company.trade }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.contact_person'|trans }}</strong></td>
+                    <td>{{ company.contactPerson }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.description'|trans }}</strong></td>
+                    <td>{{ company.description }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.comments'|trans }}</strong></td>
+                    <td>{{ company.comments }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.date_created'|trans }}</strong></td>
+                    <td>{{ company.createdAt|format_datetime }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.date_updated'|trans }}</strong></td>
+                    <td>{{ company.updatedAt|format_datetime }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

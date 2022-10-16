@@ -1,0 +1,18 @@
+owl_admin_ajax_equipment_attributes_by_category:
+    path: /category
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_attribute:indexAction
+        _format: json
+        _sylius:
+            # section: admin
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByCategory
+                arguments:
+                    categoryId: $categoryId
+            vars:
+                permission:
+                    group: equipment_attribute
+                    description: owl.ui.permission.search_by_category_equipment_attribute

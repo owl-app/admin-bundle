@@ -1,0 +1,2 @@
+{% set menu = knp_menu_get('owl.admin.company.show', [], { 'company' : company }) %}
+{{ knp_menu_render(menu, {'template': '@OwlUi/Menu/top.html.twig'}) }}

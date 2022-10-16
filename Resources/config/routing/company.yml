@@ -1,0 +1,140 @@
+owl_admin_company:
+    resource: |
+        alias: owl.company
+        section: admin
+        templates: "@OwlAdmin\\Crud\\Ajax"
+        only: ['update', 'delete']
+        permission: true
+        vars:
+            all:
+                subheader: owl.ui.manage_companies
+                redirect:
+                    optional_referer: owl_admin_company_index
+            update:
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/Company/_form.html.twig"
+                permission:
+                    group: company
+                    description: owl.ui.permission.update_company
+            delete:
+                redirect:
+                    header: xhr
+                permission:
+                    group: company
+                    description: owl.ui.permission.delete_company
+    type: sylius.resource
+
+owl_admin_company_create:
+    path: /companies/new
+    methods: [GET,POST]
+    defaults:
+        _controller: owl.controller.company:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/create.html.twig"
+            factory:
+                method: createAction
+                arguments:
+                    - "expr:service('owl.context.admin_user').getUser()"
+            vars:
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/Company/_form.html.twig"
+                permission:
+                    group: company
+                    description: owl.ui.permission.create_company
+
+owl_admin_company_show_details:
+    path: /companies/{id}
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.company:showAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Company/show.html.twig"
+            vars:
+                referer: true
+                permission:
+                    group: company
+                    description: owl.ui.permission.show_company
+
+owl_admin_company_show_location_index:
+    path: /companies/{id}/locations
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.company.location
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_location_by_company
+            template: "@OwlAdmin/Company/show.html.twig"
+            vars:
+                tab: location
+                referer: true
+                permission:
+                    group: company
+                    description: owl.ui.permission.show_company_locations
+
+owl_admin_company_show_equipment_index:
+    path: /companies/{id}/equipments
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.company.equipment
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment_by_company
+            template: "@OwlAdmin/Company/show.html.twig"
+            vars:
+                tab: equipment
+                referer: true
+                permission:
+                    group: company
+                    description: owl.ui.permission.show_company_equipments
+
+owl_admin_company_show_user_index:
+    path: /companies/{id}/users
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.company.admin_user
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_user_by_company
+            template: "@OwlAdmin/Company/show.html.twig"
+            vars:
+                tab: user
+                referer: true
+                permission:
+                    group: company
+                    description: owl.ui.permission.show_user_equipments
+
+owl_admin_company_index:
+    path: /companies/
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.company:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_company
+            template: "@OwlAdmin/Crud/index.html.twig"
+            vars:
+                subheader: owl.ui.manage_companies
+                icon: building outline
+                referer: true
+                permission:
+                    group: company
+                    description: owl.ui.permission.list_companies
+

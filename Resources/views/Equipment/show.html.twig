@@ -1,0 +1,8 @@
+{% extends '@OwlAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'owl.ui.equipment'|trans ~': '~ equipment.name }} {{ parent() }}{% endblock %}
+
+{% block content %}
+    {{ sylius_template_event('owl.admin.equipment.show.content', _context) }}
+{% endblock %}
+

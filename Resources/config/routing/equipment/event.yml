@@ -1,0 +1,80 @@
+owl_admin_equipment_show_event_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.equipment.equipment_event
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment_event
+            template: "@OwlAdmin/Equipment/show.html.twig"
+            vars:
+                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                tab: event_equipment
+                referer: true
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.show_equipment_event_list
+
+owl_admin_equipment_event_create:
+    path: /create
+    methods: [GET,POST]
+    defaults:
+        _controller: owl.controller.equipment_event:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/create.html.twig"
+            factory:
+                method: createForSubjectWithOwner
+                arguments:
+                    - "expr:isGranted(notFoundOnNull(service('owl.repository.equipment').findOneById($id)))"
+                    - "expr:service('owl.context.admin_user').getUser()"
+            vars:
+                header: owl.ui.create_event
+                route:
+                    name: owl_admin_equipment_event_create
+                    parameters: 
+                        id: $id
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/EquipmentEvent/_form.html.twig"
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.create_event
+
+owl_admin_equipment_event_update:
+    path: /{eventId}/update
+    methods: [GET,PUT]
+    defaults:
+        _controller: owl.controller.equipment_event:updateAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/update.html.twig"
+            repository:
+            repository:
+                method: find
+                arguments: 
+                    id: $eventId
+            vars:
+                header: owl.ui.update_event
+                route:
+                    name: owl_admin_equipment_event_update
+                    parameters: 
+                        id: $id
+                        eventId: $eventId
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/EquipmentEvent/_form.html.twig"
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.update_event

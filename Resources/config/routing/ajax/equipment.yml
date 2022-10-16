@@ -1,0 +1,21 @@
+owl_admin_ajax_equipment_by_name_phrase:
+    path: /search
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment:indexAction
+        _format: json
+        _sylius:
+            section: admin
+            serialization_groups: [Autocomplete]
+            # Hateoas
+            # serialization_groups: {0: Default, 'items': ['Autocomplete']}
+            permission: true
+            repository:
+                method: findByNamePartWithPermission
+                arguments:
+                    phrase: $phrase
+                    limit: 15
+            vars:
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.get_equipment_by_name

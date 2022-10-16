@@ -1,0 +1,48 @@
+owl_admin_equipment_show_refueling_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.action.list_resource_with_parent.equipment.equipment_refueling
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_equipment_refueling
+            template: "@OwlAdmin/Equipment/show.html.twig"
+            vars:
+                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                tab: refueling_equipment
+                referer: true
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.show_equipment_refueling_list
+
+owl_admin_equipment_refueling_create:
+    path: /create
+    methods: [GET,POST]
+    defaults:
+        _controller: owl.controller.equipment_refueling:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@OwlAdmin/Crud/Ajax/create.html.twig"
+            factory:
+                method: createForSubjectWithOwner
+                arguments:
+                    - "expr:isGranted(notFoundOnNull(service('owl.repository.equipment').findOneById($id)))"
+                    - "expr:service('owl.context.admin_user').getUser()"
+            vars:
+                header: owl.ui.create_refueling
+                route:
+                    name: owl_admin_equipment_refueling_create
+                    parameters: 
+                        id: $id
+                form:
+                    ajax: true
+                    actions: 
+                        - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
+                serialization_groups: [AjaxShow]
+                templates:
+                    form: "@OwlAdmin/EquipmentRefueling/_form.html.twig"
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.create_refueling

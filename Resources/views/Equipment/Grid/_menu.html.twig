@@ -1,0 +1,40 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block list %}
+    {% if item.children|length > 0 %}
+        {% for item in item.children %}
+        {%- set extras = item.extras %}
+        <div class="ui buttons mini">
+            <div class="ui{% if extras.icon is defined %} labeled icon{% endif %} floating dropdown link button">
+                {% if extras.icon is defined %}<i class="{{ extras.icon }} icon"></i>{% endif %}
+                <span class="text">{{ item.label|trans }}</span>
+                <div class="menu">
+                    {% for item in item.children %}
+                        {{ block('item') }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block item %}
+    {%- set attributes = item.attributes %}
+    {%- set extras = item.extras %}
+    {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
+    {%- set style = item.attribute('style') is not empty ? item.attribute('style') : '' %}
+    {%- if item.actsLikeFirst %}
+        {%- set classes = classes|merge(['active']) %}
+    {%- endif %}
+    {%- if classes is not empty %}
+        {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+    {%- endif %}
+    <a 
+        class="item{% if attributes.class is defined %} {{ attributes.class }}{% endif %}{% if extras.modal is defined %} ajax-modal-button{% endif %}" 
+        {% if extras.modal is defined %} data-url{% else %} href{% endif %}="{{ path(attributes.route.path, attributes.route.params) }}" 
+    >
+        {% if extras.icon is defined %}<i class="{{ extras.icon }} icon"></i> {% endif %}
+        {{ item.label|trans }}
+    </a>
+{% endblock %}

@@ -1,0 +1,36 @@
+owl_admin_partial_equipment_history_index:
+    path: /{id}/history
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.history_equipment_location:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            repository:
+                method: findForEquipment
+                arguments:
+                    id: $id
+            # template: $template
+            vars:
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.history_equipment
+
+owl_admin_partial_equipment_event_index:
+    path: /events/{id}
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.equipment_event:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            repository:
+                method: findForEquipment
+                arguments:
+                    id: $id
+            template: $template
+            vars:
+                permission:
+                    group: equipment
+                    description: owl.ui.permission.equipment_event
+

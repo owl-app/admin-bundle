@@ -1,0 +1,51 @@
+{% import "@OwlAdmin/Common/Macro/money.html.twig" as money %}
+
+<div id="equipment-details-info">
+    <h4 class="ui top attached large header">{{ 'owl.ui.equipment_data'|trans }}</h4>
+    <div class="ui attached segment">
+        <table class="ui very basic celled table">
+            <tbody>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.name'|trans }}</strong></td>
+                    <td>{{ equipment.name }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.user'|trans }}</strong></td>
+                    <td>{% if equipment.user is not null %}{{equipment.user.displayName}}{% else %}Brak{% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.company'|trans }}</strong></td>
+                    <td>{{ equipment.company.name }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.category'|trans }}</strong></td>
+                    <td>{{ equipment.category.name }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.symbol'|trans }}</strong></td>
+                    <td>{{ equipment.symbol }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.unit'|trans }}</strong></td>
+                    <td>{{ equipment.unit }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.price'|trans }}</strong></td>
+                    <td>{{ money.format(equipment.price) }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.other'|trans }}</strong></td>
+                    <td>{{ equipment.other }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.date_created'|trans }}</strong></td>
+                    <td>{{ equipment.createdAt|format_datetime }}</td>
+                </tr>
+                <tr>
+                    <td class="five wide"><strong class="gray text">{{ 'owl.ui.date_updated'|trans }}</strong></td>
+                    <td>{{ equipment.updatedAt|format_datetime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

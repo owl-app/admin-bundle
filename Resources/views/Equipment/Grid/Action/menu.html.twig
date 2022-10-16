@@ -1,0 +1,4 @@
+{% set parameters = options.parameters|merge({ 'order': options.order|default({})})  %}
+{% set menu = knp_menu_get('owl.admin.equipment_grid_' ~ options.menu, [], parameters ) %}
+
+{{ knp_menu_render(menu, {'template': '@OwlAdmin/Equipment/Grid/_menu.html.twig' })}}

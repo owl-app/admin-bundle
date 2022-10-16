@@ -1,0 +1,14 @@
+<div class="ui active tab" data-tab="details">
+    <div id="details">
+        <div class="ui grid">
+            <div class="sixteen wide mobile ten wide computer column">
+                {% include '@OwlAdmin/Equipment/Show/Tab/Details/_info.html.twig' with {'equipment': equipment} %}
+            </div>
+            <div class="sixteen wide mobile six wide computer column">
+                {% include '@OwlAdmin/Equipment/Show/Tab/Details/_attributes.html.twig' with {'equipment': equipment} %}
+                <br />
+                {% include '@OwlAdmin/Equipment/Show/Tab/Details/_files.html.twig' with {'equipment': equipment} %}
+            </div>
+        </div>
+    </div>
+</div>

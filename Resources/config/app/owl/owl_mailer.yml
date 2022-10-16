@@ -1,0 +1,23 @@
+sylius_mailer:
+    sender:
+        name: System Ewidencji
+        address: ewidencjasystem@bokk.pl
+    emails:
+        reset_password_token:
+            subject: owl.emails.user.password_reset.subject
+            template: "@OwlAdmin/Email/passwordReset.html.twig"
+        user_registration:
+            subject: owl.emails.user_registration.subject
+            template: "@OwlAdmin/Email/userRegistration.html.twig"
+        verification_token:
+            subject: owl.emails.user.verification_token.subject
+            template: "@OwlAdmin/Email/verification.html.twig"
+        registration_accepted:
+            subject: owl.emails.user.registration_accepted.subject
+            template: "@OwlAdmin/Email/registration_accepted.html.twig"
+        registration_rejected:
+            subject: owl.emails.user.registration_rejected.subject
+            template: "@OwlAdmin/Email/registration_rejected.html.twig"
+        equipment_event_notify:
+            subject: owl.emails.user.equipment_event_notify.subject
+            template: "@OwlAdmin/Email/equipment_event_notify.html.twig"
