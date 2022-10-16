@@ -1,5 +1,5 @@
 {
-    "name": "owl/admin-bundle",
+    "name": "owl-app/admin-bundle",
     "type": "symfony-bundle",
     "description": "Symfony bundle contains the Owl administration panel.",
     "authors": [
