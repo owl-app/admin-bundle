@@ -22,7 +22,6 @@ final class EquipmentGridAddOnMenuBuilder
         private EquipmentCategoryCodeProviderInterface $equipmentCategoryCodeProvider,
         private array $addOnEvents
     ) {
-
     }
 
     public function createMenu(array $options = []): ItemInterface
@@ -41,7 +40,7 @@ final class EquipmentGridAddOnMenuBuilder
             self::EVENT_ADDON_ALL_CATEGORIES
         );
 
-        if($category && $categoryCode) {
+        if ($category && $categoryCode) {
             $this->eventDispatcher->dispatch(
                 new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
                 $this->addOnEvents[$categoryCode]['grid']
@@ -54,7 +53,7 @@ final class EquipmentGridAddOnMenuBuilder
                 OrderMenuEvent::EVENT_NAME
             );
         }
-        
+
         return $menu;
     }
 }

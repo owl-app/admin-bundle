@@ -27,7 +27,8 @@ final class ListResourceWithParentAction extends AbstractResourceAction
         private RepositoryInterface $repositoryCompany,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,
         private ViewHandlerInterface $viewHandler
-    ) {}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -54,7 +55,7 @@ final class ListResourceWithParentAction extends AbstractResourceAction
             (int) $request->attributes->get('id'),
         );
 
-        if (!$request->attributes->has('id') || null === $company ) {
+        if (!$request->attributes->has('id') || null === $company) {
             throw new NotFoundHttpException(sprintf('The company has not been found'));
         }
 

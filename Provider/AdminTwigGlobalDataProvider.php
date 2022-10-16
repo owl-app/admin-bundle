@@ -14,13 +14,14 @@ class AdminTwigGlobalDataProvider implements AdminTwigGlobalDataProviderInterfac
     public function __construct(
         private NotificationRepositoryInterface $notificationRepository,
         private AdminUserContextInterface $adminUserContext
-    ) {}
+    ) {
+    }
 
     public function getNotifications(): array
     {
         $roleCanonical = $this->adminUserContext->getRoleCanonicalName();
         $user = $this->adminUserContext->getUser();
-        if(is_null($this->notifications)) {
+        if (is_null($this->notifications)) {
             $this->notifications = $this->notificationRepository->findAllNotAccepted(
                 $this->adminUserContext->getUser(),
                 $this->adminUserContext->getRoleCanonicalName()

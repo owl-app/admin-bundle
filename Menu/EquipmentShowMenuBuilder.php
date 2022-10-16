@@ -61,7 +61,7 @@ final class EquipmentShowMenuBuilder
             self::EVENT_ADDON_ALL_CATEGORIES
         );
 
-        if($category && $categoryCode) {
+        if ($category && $categoryCode) {
             $this->eventDispatcher->dispatch(
                 new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
                 $this->addOnEvents[$categoryCode]['show']

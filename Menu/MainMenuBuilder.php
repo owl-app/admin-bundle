@@ -56,14 +56,14 @@ final class MainMenuBuilder
                 ->addChild('catalog')
                 ->setLabel('owl.menu.admin.main.catalog.header');
 
-            if($isGrantedEquipments) {
+            if ($isGrantedEquipments) {
                 $catalog
                     ->addChild('equipment', ['route' => 'owl_admin_equipment_index'])
                     ->setLabel('owl.menu.admin.main.equipment.header')
                     ->setLabelAttribute('icon', 'boxes');
             }
 
-            if($isGrantedEquipmentAttributes) {
+            if ($isGrantedEquipmentAttributes) {
                 $catalog
                     ->addChild('equipment_attributes', ['route' => 'owl_admin_equipment_attribute_index'])
                     ->setLabel('owl.menu.admin.main.catalog.attributes')
@@ -76,7 +76,7 @@ final class MainMenuBuilder
     {
         $isGranted = $this->authorizationChecker->isGranted('owl_admin_company_index');
 
-        if($isGranted) {
+        if ($isGranted) {
             $menu
                 ->addChild('company', ['route' => 'owl_admin_company_index'])
                 ->setLabel('owl.menu.admin.main.company.header')
@@ -88,13 +88,13 @@ final class MainMenuBuilder
     {
         $isGranted = $this->authorizationChecker->isGranted('owl_admin_notification_index');
 
-        if($isGranted) {
+        if ($isGranted) {
             $menu
                 ->addChild('notification', ['route' => 'owl_admin_notification_index'])
                 ->setLabel('owl.menu.admin.main.notification.header')
                 ->setLabelAttribute('icon', 'bullhorn');
         }
-    }    
+    }
 
     private function addSuggestionMenu(ItemInterface $menu): void
     {
@@ -113,28 +113,28 @@ final class MainMenuBuilder
         $isGrantedLocales = $this->authorizationChecker->isGranted('owl_admin_locale_index');
         $isGrantedUsers = $this->authorizationChecker->isGranted('owl_admin_admin_user_index');
         $isGrantedSettings = $this->authorizationChecker->isGranted('owl_admin_setting_index');
-        
-        if($isGrantedLocales || $isGrantedUsers || $isGrantedSettings) {
+
+        if ($isGrantedLocales || $isGrantedUsers || $isGrantedSettings) {
             $configuration = $menu
                 ->addChild('configuration')
                 ->setLabel('owl.menu.admin.main.configuration.header')
             ;
 
-            if($isGrantedLocales) {
+            if ($isGrantedLocales) {
                 $configuration
                     ->addChild('admin_locales', ['route' => 'owl_admin_locale_index'])
                     ->setLabel('owl.menu.admin.main.configuration.locales')
                     ->setLabelAttribute('icon', 'flag');
             }
-    
-            if($isGrantedUsers) {
+
+            if ($isGrantedUsers) {
                 $configuration
                     ->addChild('admin_users', ['route' => 'owl_admin_admin_user_index'])
                     ->setLabel('owl.menu.admin.main.configuration.users')
                     ->setLabelAttribute('icon', 'users');
             }
-    
-            if($isGrantedSettings) {
+
+            if ($isGrantedSettings) {
                 $configuration
                     ->addChild('admin_settings', ['route' => 'owl_admin_setting_index'])
                     ->setLabel('owl.menu.admin.main.configuration.settings')
@@ -148,21 +148,21 @@ final class MainMenuBuilder
         $isGrantedPermissionRoles = $this->authorizationChecker->isGranted('owl_admin_rbac_role_index');
         $isGrantedPermissionAvailableRoutes = $this->authorizationChecker->isGranted('owl_admin_rbac_permission_availables');
 
-        if($isGrantedPermissionRoles ||  $isGrantedPermissionAvailableRoutes) {
+        if ($isGrantedPermissionRoles ||  $isGrantedPermissionAvailableRoutes) {
             $configuration = $menu
                 ->addChild('permission')
                 ->setLabel('owl.menu.admin.main.permission.header')
             ;
 
-            if($isGrantedPermissionRoles) {
+            if ($isGrantedPermissionRoles) {
                 $configuration
                     ->addChild('admin_permission_roles', ['route' => 'owl_admin_rbac_role_index'])
                     ->setLabel('owl.menu.admin.main.permission.roles')
                     ->setLabelAttribute('icon', 'user secret')
-                    ->setExtra('is_granted',  $isGrantedPermissionRoles);
+                    ->setExtra('is_granted', $isGrantedPermissionRoles);
             }
-    
-            if($isGrantedPermissionAvailableRoutes) {
+
+            if ($isGrantedPermissionAvailableRoutes) {
                 $configuration
                     ->addChild('admin_permission_available_routes', ['route' => 'owl_admin_rbac_permission_availables'])
                     ->setLabel('owl.menu.admin.main.permission.available')

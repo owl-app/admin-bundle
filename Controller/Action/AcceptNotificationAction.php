@@ -25,7 +25,8 @@ final class AcceptNotificationAction extends AbstractResourceAction
         private FactoryInterface $notificationAcceptedFactory,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,
         private ViewHandlerInterface $viewHandler
-    ) {}
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -53,7 +54,7 @@ final class AcceptNotificationAction extends AbstractResourceAction
             $this->adminUserContext->getRoleCanonicalName()
         );
 
-        if (!$request->attributes->has('id') || null === $notification ) {
+        if (!$request->attributes->has('id') || null === $notification) {
             throw new NotFoundHttpException(sprintf('The "%s" has not been found', $this->metadata->getHumanizedName()));
         }
 

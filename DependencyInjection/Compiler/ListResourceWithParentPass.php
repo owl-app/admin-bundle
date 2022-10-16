@@ -18,12 +18,12 @@ final class ListResourceWithParentPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         $resourceRegistry = $container->get('sylius.resource_registry');
- 
+
         foreach ($container->findTaggedServiceIds('owl.controller.action.list_with_parent_resource') as $id => $attributes) {
             $listWithParentDefinition = $container->findDefinition($id);
 
-            foreach($attributes as $attribute) {
-                if(is_null($attribute['parent']) || is_null($attribute['grid'])) {
+            foreach ($attributes as $attribute) {
+                if (is_null($attribute['parent']) || is_null($attribute['grid'])) {
                     throw new InvalidArgumentException('Tagged list with parent resource actions needs to have "parent" and "grid" attribute.');
                 }
 
@@ -47,11 +47,10 @@ final class ListResourceWithParentPass implements CompilerPassInterface
                 $container->setDefinition(implode('.', [$id, $metadataParent->getName(), $metadataChild->getName()]), $definition);
             }
         }
-
     }
 
     protected function getMetadataDefinition(MetadataInterface $metadata): Definition
-    { 
+    {
         $definition = new Definition(Metadata::class);
         $definition
             ->setFactory([new Reference('sylius.resource_registry'), 'get'])
