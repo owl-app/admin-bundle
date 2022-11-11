@@ -33,7 +33,7 @@ owl_admin_company_create:
     path: /companies/new
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.company:createAction
+        _controller: owl.controller.company::createAction
         _sylius:
             section: admin
             permission: true
@@ -58,7 +58,7 @@ owl_admin_company_show_details:
     path: /companies/{id}
     methods: [GET]
     defaults:
-        _controller: owl.controller.company:showAction
+        _controller: owl.controller.company::showAction
         _sylius:
             section: admin
             permission: true
@@ -124,7 +124,7 @@ owl_admin_company_index:
     path: /companies/
     methods: [GET]
     defaults:
-        _controller: owl.controller.company:indexAction
+        _controller: owl.controller.company::indexAction
         _sylius:
             section: admin
             permission: true

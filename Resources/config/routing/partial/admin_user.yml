@@ -2,7 +2,7 @@ owl_admin_partial_admin_user_accept_registration:
     path: /accept-registration/{id}
     methods: [GET,PUT]
     defaults:
-        _controller: owl.controller.admin_user_registration_data:updateAction
+        _controller: owl.controller.admin_user_registration_data::updateAction
         _sylius:
             section: admin
             permission: true
@@ -24,7 +24,7 @@ owl_admin_partial_admin_user_reject_registration:
     path: /reject-registration/{id}
     methods: [GET,PUT]
     defaults:
-        _controller: owl.controller.admin_user_registration_data:updateAction
+        _controller: owl.controller.admin_user_registration_data::updateAction
         _sylius:
             section: admin
             permission: true

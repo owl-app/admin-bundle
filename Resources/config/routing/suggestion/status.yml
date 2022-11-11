@@ -23,7 +23,7 @@ owl_admin_suggestion_status_change_status:
     path: /change-status
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.suggestion_status:createAction
+        _controller: owl.controller.suggestion_status::createAction
         _sylius:
             section: admin
             permission: true

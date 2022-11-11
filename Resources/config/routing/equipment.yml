@@ -47,7 +47,7 @@ owl_admin_equipment_index:
     path: /equipments/
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment:indexAction
+        _controller: owl.controller.equipment::indexAction
         _sylius:
             section: admin
             permission: true
@@ -65,7 +65,7 @@ owl_admin_equipment_create:
     path: /equipments/new
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.equipment:createAction
+        _controller: owl.controller.equipment::createAction
         _sylius:
             section: admin
             permission: true
@@ -85,7 +85,7 @@ owl_admin_equipment_show_details:
     path: /equipments/{id}
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment:showAction
+        _controller: owl.controller.equipment::showAction
         _sylius:
             section: admin
             permission: true

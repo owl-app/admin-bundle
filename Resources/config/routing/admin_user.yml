@@ -53,7 +53,7 @@ owl_admin_admin_user_permission_availables:
     path: /users/{id}/permissions/availables
     methods: [GET]
     defaults:
-        _controller: owl.controller.admin_user_permission:availablesAction
+        _controller: owl.controller.admin_user_permission::availablesAction
         _sylius:
             section: admin
             permission: true
@@ -71,7 +71,7 @@ owl_admin_confirm_registration:
     path: /{id}/registration
     methods: [GET]
     defaults:
-        _controller: owl.controller.admin_user:updateAction
+        _controller: owl.controller.admin_user::updateAction
         _sylius:
             section: admin
             permission: true

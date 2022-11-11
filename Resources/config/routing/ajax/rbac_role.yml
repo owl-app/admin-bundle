@@ -2,7 +2,7 @@ owl_admin_ajax_rbac_role_assign:
     path: /assign
     methods: [POST]
     defaults:
-        _controller: owl.controller.rbac_role:assignAction
+        _controller: owl.controller.rbac_role::assignAction
         _format: json
         _sylius:
             serialization_groups: [ADD]
@@ -23,7 +23,7 @@ owl_admin_ajax_rbac_role_revoke:
     path: /revoke
     methods: [DELETE]
     defaults:
-        _controller: owl.controller.rbac_role:revokeAction
+        _controller: owl.controller.rbac_role::revokeAction
         _format: json
         _sylius:
             serialization_groups: [DELETE]

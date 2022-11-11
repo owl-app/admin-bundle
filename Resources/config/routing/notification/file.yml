@@ -21,7 +21,7 @@ owl_admin_notification_file_create:
     path: /create
     methods: [POST]
     defaults:
-        _controller: owl.controller.notification_file:createAction
+        _controller: owl.controller.notification_file::createAction
         _format: json
         _sylius:
             section: admin
@@ -42,7 +42,7 @@ owl_admin_notification_file_update:
     path: /{id}/update
     methods: [GET,PUT]
     defaults:
-        _controller: owl.controller.notification_file:updateAction
+        _controller: owl.controller.notification_file::updateAction
         _sylius:
             section: admin
             permission: true

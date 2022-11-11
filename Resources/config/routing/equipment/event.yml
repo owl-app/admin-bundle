@@ -20,7 +20,7 @@ owl_admin_equipment_event_create:
     path: /create
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.equipment_event:createAction
+        _controller: owl.controller.equipment_event::createAction
         _sylius:
             section: admin
             permission: true
@@ -51,7 +51,7 @@ owl_admin_equipment_event_update:
     path: /{eventId}/update
     methods: [GET,PUT]
     defaults:
-        _controller: owl.controller.equipment_event:updateAction
+        _controller: owl.controller.equipment_event::updateAction
         _sylius:
             section: admin
             permission: true

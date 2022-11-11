@@ -36,7 +36,7 @@ owl_admin_notification_index:
     path: /notifications/
     methods: [GET]
     defaults:
-        _controller: owl.controller.notification:indexAction
+        _controller: owl.controller.notification::indexAction
         _sylius:
             section: admin
             permission: true
@@ -54,7 +54,7 @@ owl_admin_notification_create:
     path: /notifications/new
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.notification:createAction
+        _controller: owl.controller.notification::createAction
         _sylius:
             section: admin
             permission: true
@@ -81,7 +81,7 @@ owl_admin_notification_show:
     path: /notifications/{id}
     methods: [GET]
     defaults:
-        _controller: owl.controller.notification:showAction
+        _controller: owl.controller.notification::showAction
         _sylius:
             section: admin
             permission: true

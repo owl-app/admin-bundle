@@ -39,7 +39,7 @@ owl_admin_equipment_attribute_create:
     path: /product-attributes/{type}/new
     methods: [GET, POST]
     defaults:
-        _controller: owl.controller.equipment_attribute:createAction
+        _controller: owl.controller.equipment_attribute::createAction
         _sylius:
             section: admin
             factory:
@@ -66,21 +66,21 @@ owl_admin_get_attribute_types:
     path: /attribute-types
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment_attribute:getAttributeTypesAction
+        _controller: owl.controller.equipment_attribute::getAttributeTypesAction
         template: "@OwlAdmin/EquipmentAttribute/Types/attributeTypes.html.twig"
 
 owl_admin_get_equipment_attributes:
     path: /attributes
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment_attribute:renderAttributesAction
+        _controller: owl.controller.equipment_attribute::renderAttributesAction
         template: "@OwlAdmin/Equipment/Attribute/attributeChoice.html.twig"
 
 owl_admin_render_attribute_forms:
     path: /attribute-forms
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment_attribute:renderAttributeValueFormsAction
+        _controller: owl.controller.equipment_attribute::renderAttributeValueFormsAction
         template: "@OwlAdmin/Equipment/Attribute/attributeValues.html.twig"
         _sylius:
             section: admin

@@ -42,7 +42,7 @@ owl_admin_rbac_role_availables:
     path: /{id}/availables
     methods: [GET]
     defaults:
-        _controller: owl.controller.rbac_role:availablesAction
+        _controller: owl.controller.rbac_role::availablesAction
         _sylius:
             section: admin
             permission: true

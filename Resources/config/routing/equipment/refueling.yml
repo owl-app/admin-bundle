@@ -20,7 +20,7 @@ owl_admin_equipment_refueling_create:
     path: /create
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.equipment_refueling:createAction
+        _controller: owl.controller.equipment_refueling::createAction
         _sylius:
             section: admin
             permission: true

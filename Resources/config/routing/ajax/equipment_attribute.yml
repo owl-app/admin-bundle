@@ -2,7 +2,7 @@ owl_admin_ajax_equipment_attributes_by_category:
     path: /category
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment_attribute:indexAction
+        _controller: owl.controller.equipment_attribute::indexAction
         _format: json
         _sylius:
             # section: admin

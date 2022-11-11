@@ -2,7 +2,7 @@ owl_admin_ajax_rbac_permission_add:
     path: /add
     methods: [POST]
     defaults:
-        _controller: owl.controller.rbac_permission:addAction
+        _controller: owl.controller.rbac_permission::addAction
         _format: json
         _sylius:
             form: Owl\Bundle\RbacBundle\Form\Type\AvailablePermissionType
@@ -20,7 +20,7 @@ owl_admin_ajax_rbac_permission_remove:
     path: /{name}
     methods: [DELETE]
     defaults:
-        _controller: owl.controller.rbac_permission:removeAction
+        _controller: owl.controller.rbac_permission::removeAction
         _format: json
         _sylius:
             section: admin

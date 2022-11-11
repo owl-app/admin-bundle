@@ -2,7 +2,7 @@ owl_admin_suggestion_index:
     path: /suggestions/
     methods: [GET]
     defaults:
-        _controller: owl.controller.suggestion:indexAction
+        _controller: owl.controller.suggestion::indexAction
         _sylius:
             section: admin
             permission: true
@@ -20,7 +20,7 @@ owl_admin_suggestion_create:
     path: /suggestions/new
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.suggestion:createAction
+        _controller: owl.controller.suggestion::createAction
         _sylius:
             section: admin
             permission: true
@@ -49,7 +49,7 @@ owl_admin_suggestion_bulk_delete:
     path: /suggestions/bulk-delete
     methods: [DELETE]
     defaults:
-        _controller: owl.controller.suggestion:bulkDeleteAction
+        _controller: owl.controller.suggestion::bulkDeleteAction
         _sylius:
             section: admin
             redirect:
@@ -67,7 +67,7 @@ owl_admin_suggestion_delete:
     path: /suggestions/{id}
     methods: [DELETE]
     defaults:
-        _controller: owl.controller.suggestion:deleteAction
+        _controller: owl.controller.suggestion::deleteAction
         _sylius:
             section: admin
             redirect: 

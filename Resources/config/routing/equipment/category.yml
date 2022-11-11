@@ -21,7 +21,7 @@ owl_admin_equipment_category_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment_category:indexAction
+        _controller: owl.controller.equipment_category::indexAction
         _sylius:
             section: admin
             permission: true
@@ -40,7 +40,7 @@ owl_admin_equipment_category_create:
     path: /new
     methods: [GET,POST]
     defaults:
-        _controller: owl.controller.equipment_category:createAction
+        _controller: owl.controller.equipment_category::createAction
         _sylius:
             section: admin
             permission: true
@@ -62,7 +62,7 @@ owl_admin_equipment_category_update:
     path: /{id}/update
     methods: [GET,PUT]
     defaults:
-        _controller: owl.controller.equipment_category:updateAction
+        _controller: owl.controller.equipment_category::updateAction
         _sylius:
             section: admin
             permission: true

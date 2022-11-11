@@ -2,7 +2,7 @@ owl_admin_ajax_equipment_by_name_phrase:
     path: /search
     methods: [GET]
     defaults:
-        _controller: owl.controller.equipment:indexAction
+        _controller: owl.controller.equipment::indexAction
         _format: json
         _sylius:
             section: admin
