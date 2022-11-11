@@ -85,6 +85,11 @@ $.fn.extend({
         closable: false,
         onHidden: function () {
           $(".ui.modal.hidden").removeAttr("style");
+        },
+        onHide: function () {
+          if (typeof tinyMCE !== "undefined") {
+            tinyMCE.editors = [];
+          }
         }
       }).modal("show");
 
