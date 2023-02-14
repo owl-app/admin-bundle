@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Owl\Bundle\AdminBundle\Controller\Action;
 
 use FOS\RestBundle\View\View;
-use Owl\Bridge\SyliusResourceBridge\Controller\AbstractResourceAction;
+use Owl\Bridge\SyliusResource\Controller\AbstractResourceAction;
 use Owl\Component\Core\Context\AdminUserContextInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
