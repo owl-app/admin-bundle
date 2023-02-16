@@ -7,16 +7,10 @@ import 'sylius/ui/app';
 import 'sylius/ui/sylius-auto-complete';
 import 'sylius/ui/sylius-product-attributes';
 import 'sylius/ui/sylius-product-auto-complete';
-import 'sylius/ui/sylius-prototype-handler';
 
 import './sylius-compound-form-errors';
-import './sylius-lazy-choice-tree';
 import './sylius-menu-search';
-import './sylius-move-product-variant';
-import './sylius-move-taxon';
 import './sylius-product-images-preview';
-import './sylius-product-slug';
-import './sylius-taxon-slug';
 
 //owl
 import './owl-permission';
@@ -27,9 +21,6 @@ import './jquery.form';
 import './owl-form';
 import './owl-modal-ajax';
 import GridComponent from 'sylius/ui/owl-grid';
-
-// import StatisticsComponent from './sylius-statistics.js+';
-import SyliusTaxonomyTree from './sylius-taxon-tree';
 
 $(window).off('beforeunload');
 
@@ -115,15 +106,6 @@ document.addEventListener("turbo:load", () => {
 
   // permission
   $('.ui.checkbox-permission').changePermission();
- 
-  $('#sylius_product_variant_pricingCalculator').handlePrototypes({
-    prototypePrefix: 'sylius_product_variant_pricingCalculator',
-    containerSelector: '#sylius_calculator_container',
-  });
-
-  $('#sylius_customer_createUser').change(() => {
-    $('#user-form').toggle();
-  });
 
   $('.sylius-autocomplete').autoComplete();
 
@@ -133,15 +115,6 @@ document.addEventListener("turbo:load", () => {
 
   $('table thead th.sortable').on('click', (event) => {
     window.location = $(event.currentTarget).find('a').attr('href');
-  });
-
-  $('.sylius-update-product-variants').moveProductVariant($('.sylius-product-variant-position'));
-  $('.sylius-taxon-move-up').taxonMoveUp();
-  $('.sylius-taxon-move-down').taxonMoveDown();
-
-  $('#sylius_shipping_method_calculator').handlePrototypes({
-    prototypePrefix: 'sylius_shipping_method_calculator_calculators',
-    containerSelector: '.configuration',
   });
 
   $('form.is-ajax').ajaxForm();
@@ -209,10 +182,7 @@ document.addEventListener("turbo:load", () => {
 
   $('.sylius-tabular-form').addTabErrors();
   $('.ui.accordion').addAccordionErrors();
-  $('#sylius-product-taxonomy-tree').choiceTree('productTaxon', true, 1);
 
-  $(document).productSlugGenerator();
-  $(document).taxonSlugGenerator();
   $(document).previewUploadedImage('#sylius_product_images');
   $(document).previewUploadedImage('#sylius_taxon_images');
 
@@ -224,18 +194,7 @@ document.addEventListener("turbo:load", () => {
     }
   });
 
-  const taxonomyTree = new SyliusTaxonomyTree();
-
-  // $(`${formsList}, .check-unsaved`).dirtyForms();
-
   $('#more-details').accordion({ exclusive: false });
-
-  $('.variants-accordion__title').on('click', '.icon.button', function(e) {
-    $(e.delegateTarget).next('.variants-accordion__content').toggle();
-    $(this).find('.dropdown.icon').toggleClass('counterclockwise rotated');
-  });
-
-  //const dashboardStatistics = new StatisticsComponent(document.querySelector('.stats'));
 
   $('.sylius-admin-menu').searchable('.sylius-admin-menu-search-input');
 
