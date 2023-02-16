@@ -43,12 +43,6 @@ owl_admin_admin_user:
                     description: owl.ui.permission.bulk_delete_user
     type: sylius.resource
 
-owl_admin_admin_user_remove_avatar:
-    path: /users/{id}/remove-avatar
-    methods: [PUT]
-    defaults:
-        _controller: Sylius\Bundle\AdminBundle\Action\RemoveAvatarAction
-
 owl_admin_admin_user_permission_availables:
     path: /users/{id}/permissions/availables
     methods: [GET]

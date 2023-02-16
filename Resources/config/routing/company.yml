@@ -69,33 +69,23 @@ owl_admin_company_show_details:
                     group: company
                     description: owl.ui.permission.show_company
 
-owl_admin_company_show_location_index:
-    path: /companies/{id}/locations
-    methods: [GET]
-    defaults:
-        _controller: owl.controller.action.list_resource_with_parent.company.location
-        _sylius:
-            section: admin
-            permission: true
-            grid: owl_admin_location_by_company
-            template: "@OwlAdmin/Company/show.html.twig"
-            vars:
-                tab: location
-                referer: true
-                permission:
-                    group: company
-                    description: owl.ui.permission.show_company_locations
-
 owl_admin_company_show_equipment_index:
     path: /companies/{id}/equipments
     methods: [GET]
     defaults:
-        _controller: owl.controller.action.list_resource_with_parent.company.equipment
+        _controller: owl.controller.equipment::indexAction
         _sylius:
             section: admin
             permission: true
             grid: owl_admin_equipment_by_company
             template: "@OwlAdmin/Company/show.html.twig"
+            parents:
+                - 
+                    resource: owl.company
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $id
             vars:
                 tab: equipment
                 referer: true
@@ -107,12 +97,19 @@ owl_admin_company_show_user_index:
     path: /companies/{id}/users
     methods: [GET]
     defaults:
-        _controller: owl.controller.action.list_resource_with_parent.company.admin_user
+        _controller: owl.controller.admin_user::indexAction
         _sylius:
             section: admin
             permission: true
             grid: owl_admin_user_by_company
             template: "@OwlAdmin/Company/show.html.twig"
+            parents:
+                - 
+                    resource: owl.company
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $id
             vars:
                 tab: user
                 referer: true

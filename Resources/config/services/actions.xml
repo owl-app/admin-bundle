@@ -13,16 +13,5 @@
             <tag name="owl.controller.action" alias="owl.notification" />
         </service>
 
-        <service id="owl.controller.action.list_resource_with_parent" class="Owl\Bundle\AdminBundle\Controller\Action\ListResourceWithParentAction">
-            <argument type="service" id="sylius.resource_controller.resources_collection_provider" />
-            <argument type="service" id="owl.repository.company" />
-            <argument type="service" id="sylius.resource_controller.request_configuration_factory"/>
-            <argument type="service" id="sylius.resource_controller.view_handler" />
-            <tag name="owl.controller.action.list_with_parent_resource" parent="owl.company" grid="owl.equipment" />
-            <tag name="owl.controller.action.list_with_parent_resource" parent="owl.company" grid="owl.admin_user" />
-            <tag name="owl.controller.action.list_with_parent_resource" parent="owl.equipment" grid="owl.equipment_event" />
-            <tag name="owl.controller.action.list_with_parent_resource" parent="owl.equipment" grid="owl.equipment_refueling" />
-        </service>
-
     </services>
 </container>

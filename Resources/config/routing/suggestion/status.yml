@@ -2,15 +2,22 @@ owl_admin_suggestion_status_history_status:
     path: /history
     methods: [GET]
     defaults:
-        _controller: owl.controller.suggestion_status:indexAction
+        _controller: owl.controller.suggestion_status::indexAction
         _sylius:
             section: admin
             permission: true
-            template: "@OwlAdmin/Status/history.html.twig"
+            template: "@OwlAdmin/Suggestion/Status/history.html.twig"
             repository:
                 method: createHistoryListQueryBuilder
-                arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.suggestion').findOneById($suggestionId)))"
+                arguments: 
+                    id: $suggestionId
+            parents:
+                - 
+                    resource: owl.suggestion
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $suggestionId
             vars:
                 subheader: owl.ui.manage_suggestions
                 icon: list
@@ -31,8 +38,15 @@ owl_admin_suggestion_status_change_status:
             factory:
                 method: createForSubjectWithOwner
                 arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.suggestion').findOneById($suggestionId)))"
+                    - suggestion
                     - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.suggestion
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $suggestionId
             vars:
                 header: owl.ui.change_status_suggestion
                 route:
@@ -44,8 +58,6 @@ owl_admin_suggestion_status_change_status:
                     actions: 
                         - { name: "referer", text: "owl.form.actions.save", icon: "plus", color: "blue"}
                 serialization_groups: [AjaxShow]
-                # templates:
-                #     form: "@OwlAdmin/Suggestion/_form.html.twig"
                 permission:
                     group: suggestion
                     description: owl.ui.permission.change_status_suggestion

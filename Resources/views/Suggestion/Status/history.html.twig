@@ -2,9 +2,9 @@
 {% import '@OwlUi/Macro/messages.html.twig' as messages %}
 {% import '@OwlUi/Macro/headers.html.twig' as headers %}
 
-{% set subject = resources.subject %}
+{% set subject = suggestion %}
 {% set header = configuration.vars.header|default(metadata.applicationName~'.ui.history_'~metadata.name) %}
-{% set data = resources.statuses %}
+{% set data = resources %}
 
 {{ headers.default(header|trans, configuration.vars.icon|default('plus'), subject.name|default('')|trans) }}
 
@@ -39,4 +39,3 @@
 <div class="actions">
     {% include '@OwlUi/Form/Buttons/_cancel_ajax.html.twig' with {'actions': configuration.vars.form.actions|default(owl_form.actions), 'isAjax': true} %}
 </div>
-

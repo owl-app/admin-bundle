@@ -1,22 +1,3 @@
-owl_admin_suggestion_file:
-    resource: |
-        alias: owl.suggestion_file
-        section: admin
-        path: /
-        templates: "@OwlAdmin\\Crud"
-        only: ['show', 'delete']
-        permission: true
-        vars:
-            delete:
-                redirect:
-                    header: xhr
-                form:
-                    ajax: true
-                permission:
-                    group: suggestion
-                    description: owl.ui.permission.delete_file
-    type: sylius.resource
-
 owl_admin_suggestion_file_create:
     path: /create
     methods: [POST]
@@ -31,8 +12,15 @@ owl_admin_suggestion_file_create:
             factory:
                 method: createForSubjectWithUploader
                 arguments:
-                    - "expr:notFoundOnNull(service('owl.repository.suggestion').findOneById($suggestionId))"
+                    - suggestion
                     - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.suggestion
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $suggestionId
             vars:
                 permission:
                     group: suggestion
@@ -47,11 +35,13 @@ owl_admin_suggestion_file_update:
             section: admin
             permission: true
             template: "@OwlAdmin/Crud/Ajax/update.html.twig"
-            factory:
-                method: createForSubjectWithUploader
-                arguments:
-                    - "expr:notFoundOnNull(service('owl.repository.suggestion').findOneById($suggestionId))"
-                    - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.suggestion
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $suggestionId
             vars:
                 redirect:
                     save:
@@ -66,8 +56,34 @@ owl_admin_suggestion_file_update:
                 serialization_groups: [AjaxShow]
                 route:
                     parameters:
-                        suggestionId: $suggestionId
                         id: $id
+                        fileId: $fileId
                 permission:
                     group: suggestion
                     description: owl.ui.permission.update_file
+
+owl_admin_suggestion_file_delete:
+    path: /{id}/delete
+    methods: [DELETE]
+    defaults:
+        _controller: owl.controller.suggestion_file::deleteAction
+        _sylius:
+            section: admin
+            redirect: 
+                header: xhr
+            permission: true
+            parents:
+                - 
+                    resource: owl.suggestion
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $suggestionId
+            vars:
+                redirect:
+                    header: xhr
+                form:
+                    ajax: true
+                permission:
+                    group: suggestion
+                    description: owl.ui.permission.delete_file
