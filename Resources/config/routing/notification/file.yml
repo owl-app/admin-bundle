@@ -28,10 +28,17 @@ owl_admin_notification_file_create:
             serialization_groups: [Uploaded]
             permission: true
             form: Owl\Bundle\CoreBundle\Form\Type\Notification\NotificationUploadFileType
+            parents:
+                - 
+                    resource: owl.notification
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $notificationId
             factory:
                 method: createForSubjectWithUploader
                 arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.notification').findOneById($notificationId)))"
+                    - notification
                     - "expr:service('owl.context.admin_user').getUser()"
             vars:
                 permission:
@@ -47,11 +54,13 @@ owl_admin_notification_file_update:
             section: admin
             permission: true
             template: "@OwlAdmin/Crud/Ajax/update.html.twig"
-            factory:
-                method: createForSubjectWithUploader
-                arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.notification').findOneById($notificationId)))"
-                    - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.notification
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $notificationId
             vars:
                 redirect:
                     save:
