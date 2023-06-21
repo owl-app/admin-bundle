@@ -1,0 +1,203 @@
+owl:
+    email:
+        password_reset:
+            hello: Hello
+            reset_your_password: Reset your password
+            subject: Password reset
+            to_reset_your_password: To reset your password - click on the link below
+        user_registration:
+            start_inventory_of_equipment: Start equipment inventory
+            subject: User registration
+            welcome_to_our_system: Welcome to our record system!
+            you_have_just_been_registered: You have just been registered. Thank you
+        verification_token:
+            hello: Hello
+            subject: Email address verification
+            to_verify_your_email_address: To verify your email address - click the link below
+            verify_your_email_address: Verify your email address
+        registration_accepted:
+            subject: Account acceptance in the Records system
+            thank_you_for_your_patience: Thank you for your patience
+            you_have_just_been_accepted: Your account has just been approved
+            start_using_system: Start taking full advantage of the capabilities of the Records system
+        registration_rejected:
+            subject: Rejection of registration in the Records system
+            thank_you_for_your_patience: Thank you for your patience
+            your_registration_to_email_address: Your e-mail registration
+            in_system_has_unfortunately_been_rejected: was unfortunately rejected in the Records system
+            reason_for_rejection: Reason for rejection
+        equipment_event_notify:
+            subject: 'Equipment event:'
+        user_invite:
+            subject: INFORMATION on changes to the RECORD SYSTEM
+        user_new_registration:
+            subject: New user registration
+            desc: New user registration
+        new_suggestion:
+            subject: New suggestion in the system
+            desc: New suggestion in the system
+
+    menu:
+        admin:
+            main:
+                suggestion:
+                    header: Suggestion
+                knowledge_base:
+                    header: Knowledge base
+                company:
+                    header: Companies
+                equipment:
+                    header: Equipments
+                equipment_attribute:
+                    header: Attributes
+                location:
+                    header: Locations
+                mailbox:
+                    header: Mailboxes
+                notification:
+                    header: Notifications
+                catalog:
+                    attributes: Attributes
+                    header: Catalog
+                configuration:
+                    users: Users
+                    settings: Settings
+                    header: Configuration
+                    locales: Locales
+                permission:
+                    header: Permissions
+                    available: Available
+                    roles: Roles
+                stats:
+                    header: Stats
+    ui:
+        permission:
+            availables_roles: Available roles in the system
+            rbac_permission_availables: Permissions - accesses
+            list_permission_availables_in_system: List of accesses in the system
+            add_permission_to_system: Adding permissions to the system
+            remove_permission_to_system: Removing permission from the system
+            rbac_permission_role: Permissions - roles
+            list_roles: Role list
+            create_role: New role
+            update_role: Edit role
+            delete_role: Delete role
+            list_permission_assigned_to_role: List permissions assigned to the role
+            add_permission_to_role: Adding permission to role
+            revoke_permission_to_role: Remove role permission
+            user: Users
+            list_users: List users
+            show_user: Details user
+            create_user: New user
+            update_user: Edit user
+            show_history_route: History route
+            list_permissions_assign_to_user: List permissions assigned to user
+            assign_permission_to_user: Assigning permissions to user
+            revoke_permission_to_user: Remove user permission
+            locale: Locale
+            list_locales: List locales
+            create_locale: New locale
+            update_locale: Edit locale
+            suggestion: Suggestion
+            list_suggestions: List suggestions
+            create_suggestion: New suggestion
+            update_suggestion: Edit suggestion
+            delete_suggestion: Delete suggestion
+            show_suggestions: Show suggestion
+            bulk_delete_suggestion: Delete multiple suggestions
+            change_status_suggestion: Suggestion status change
+            history_status_suggestion: Suggestion status history
+            create_file: Add file
+            update_file: Edit file
+            delete_file: Delete file
+            change_status: Change status
+            knowledge_base: Knowledge base
+            list_knowledge_bases: List knowledge bases
+            create_knowledge_base: New knowledge base
+            update_knowledge_base: Edit knowledge base
+            delete_knowledge_base: Delete knowledge base
+            show_knowledge_bases: Show knowledge base
+            company: Companies
+            list_companies: List companies
+            show_company: 'Details company: Data'
+            show_company_locations: 'Company details: Locations'
+            show_company_equipments: 'Szczegóły firmy: Wyposażenie'
+            show_user_equipments: 'Company details: Equipment'
+            create_company: New company
+            update_company: Edit company
+            delete_company: Delete company
+            equipment: Equipments
+            list_equipments: List equipments
+            show_equipment: Show equipment
+            create_equipment: New equipment
+            update_equipment: Edit equipment
+            delete_equipment: Delete equipment
+            get_equipment_by_name: Equipment search by name
+            history_equipment: Equipment history in view
+            location: Locations
+            list_locations: List locations
+            show_location: Show locations
+            create_location: New location
+            update_location: Edit location
+            delete_location: Delete location
+            history_location: Location history in view
+            generate_pdf_locations: Generate PDF
+            generate_excel_equipments: Generate Excel
+            generate_pdf_equipments: Generate PDF
+            generate_excel_locations: Generate Excel
+            equipment_category: Equipment categories
+            location_category: Location categories
+            list_category: List categories
+            create_category: New category
+            update_category: Edit category
+            delete_category: Delete category
+            mailbox: Mailbox
+            update_mailbox: Edit mailbox
+            delete_mailbox: Delete mailbox
+            show_mailbox: Details mailbox
+            list_mailboxes: List mailboxes
+            create_mailbox: New mailbox
+            mailbox_autologin: Autologin to mailbox
+            notification: Notifications
+            update_notification: Edit notification
+            delete_notification: Delete notification
+            show_notification: Details notification
+            details_to_accept_notification: Details - acceptance of the message
+            list_notifications: List notifications
+            create_notification: New notification
+            show_notification_accepted: Message acceptance list
+            system_setting: System settings
+            edit_system_settings: Edit system settings
+            registration: Registration
+            reject_registration: Reject registration
+            accept_registration: Accept registration
+            equipment_attribute: Equipment - attribute
+            list_equipment_attributes: List attributes
+            create_equipment_attribute: New attribute
+            update_equipment_attribute: Edit attribute
+            delete_equipment_attribute: Delete attribute
+            search_by_category_equipment_attribute: Search by category
+            equipment_attribute_forms: Add attributes to form
+            equipment_event: List events
+            show_equipment_history_list: 'Equipment details: Equipment history'
+            show_equipment_event_list: 'Equipment details: Equipment Events'
+            show_equipment_refueling_list: 'Equipment details: Refueling'
+            create_refueling: Add refueling
+            update_refueling: Edit refueling
+            create_event: New event
+            update_event: Edit event
+            equipment_event_delete_file: Deleting file to event
+            equipment_event_create_file: Add file to event
+            equipment_event_update_file: Edit file event
+            stats: Stats
+            stats_index: Analytics home
+            show_equipment_transport_event_list: 'Equipment details: Events for transport equipment'
+            create_transport_event: Add equipment event to transport
+            update_transport_event: Edit equipment event to transport
+            equipment_event_transport_create_file: Add file to transport event
+            equipment_event_transport_update_file: Edit file to transport event 
+            equipment_event_transport_delete_file: Delete file to transport event 
+
+
+
+

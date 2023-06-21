@@ -28,14 +28,22 @@ owl:
             reason_for_rejection: Powód odrzucenia
         equipment_event_notify:
             subject: 'Zdarzenie do wyposażenia:'
+        user_invite:
+            subject: INFORMACJA o zmianach SYSTEMU EWIDENCJI
+        user_new_registration:
+            subject: Nowa rejestracja użytkownika
+            desc: Nowa rejestracja użytkownika
+        new_suggestion:
+            subject: Nowa sugestia w systemie
+            desc: Nowa sugestia w systemie
 
     menu:
         admin:
             main:
-                service:
-                    header: Wykonawcy
                 suggestion:
                     header: Sugestie
+                knowledge_base:
+                    header: Baza wiedzy
                 company:
                     header: Firmy
                 equipment:
@@ -49,13 +57,8 @@ owl:
                 notification:
                     header: Komunikaty
                 catalog:
-                    association_types: Typy powiązań
                     attributes: Atrybuty
                     header: Katalog
-                    inventory: Zapasy
-                    options: Warianty
-                    products: Produkty
-                    taxons: Taksonomie
                 configuration:
                     users: Użytkownicy
                     settings: Ustawienia
@@ -64,9 +67,11 @@ owl:
                     cities: Miasta
                     locales: Języki
                 permission:
-                    header: 'Uprawnienia'
-                    available: 'Dostępne'
-                    roles: 'Role'
+                    header: Uprawnienia
+                    available: Dostępne
+                    roles: Role
+                stats:
+                    header: Analizy
     ui:
         permission:
             availables_roles: Dostępne role w systemie
@@ -95,8 +100,10 @@ owl:
             revoke_permission_to_role: Usuwanie uprawnienia do roli
             user: Użytkownicy
             list_users: Lista użytkowników
+            show_user: Szczegóły użytkownika
             create_user: Dodawanie użytkownika
             update_user: Edycja użytkownika
+            show_history_route: Historia akcji
             list_permissions_assign_to_user: Lista uprawnień przypisanych do użytkownika
             assign_permission_to_user: Przypisywanie uprawnień do użytkownika
             revoke_permission_to_user: Usuwanie uprawnienia użytkownika
@@ -119,6 +126,12 @@ owl:
             update_file: Edycja pliku
             delete_file: Usuwanie pliku
             change_status: Zmiana statusu
+            knowledge_base: Baza wiedzy
+            list_knowledge_bases: Lista bazy wiedzy
+            create_knowledge_base: Dodawanie bazy wiedzy
+            update_knowledge_base: Edycja bazy wiedzy
+            delete_knowledge_base: Usuwanie bazy wiedzy
+            show_knowledge_bases: Widok bazy wiedzy
             company: Firmy
             list_companies: Lista firm
             show_company: "Szczegóły firmy: Dane"
@@ -143,7 +156,9 @@ owl:
             update_location: Edycja lokalizacji
             delete_location: Usuwanie lokalizacji
             history_location: Historia lokalizacji w widoku
-            generate_pdf_locations: Generowanei PDF'a
+            generate_pdf_locations: Generowanie PDF'a
+            generate_excel_equipments: Generowanie Excel'a
+            generate_pdf_equipments: Generowanie PDF'a
             generate_excel_locations: Generowanie Excel'a
             equipment_category: Kategorie wyposażenia
             location_category: Kategorie lokalizacji
@@ -157,6 +172,7 @@ owl:
             show_mailbox: Szczegóły poczty
             list_mailboxes: Lista skrzynek pocztowych
             create_mailbox: Dodawanie poczty
+            mailbox_autologin: Autologowanie do poczty
             notification: Komunikaty
             update_notification: Edycja komunikatu
             delete_notification: Usuwanie komunikatu
@@ -164,6 +180,7 @@ owl:
             details_to_accept_notification: Szczegóły - akceptacja komunikatu
             list_notifications: Lista komunikatów
             create_notification: Dodawanie komunikatu
+            show_notification_accepted: Lista akceptacji komunikatów
             system_setting: Ustawienia systemu
             edit_system_settings: Edycja ustawień systemu
             registration: Rejestracja
@@ -181,7 +198,22 @@ owl:
             show_equipment_event_list: 'Szczegóły wyposażenia: Zdarzenia do wyposażenia'
             show_equipment_refueling_list: 'Szczegóły wyposażenia: Tankowania'
             create_refueling: Dodawanie tankowania
+            update_refueling: Edytowanie tankowania
             create_event: Dodawanie zdarzenia
             update_event: Edycja zdarzenia
+            equipment_event_delete_file: Usuwanie pliku do zdarzenia
+            equipment_event_create_file: Dodawanie pliku do zdarzenia
+            equipment_event_update_file: Edycja pliku zdarzenia
+            stats: Analizy
+            stats_index: Strona główna analiz
+            show_equipment_transport_event_list: "Szczegóły wyposażenia: Zdarzenia do wyposażenia transportu"
+            create_transport_event: Dodawanie zdarzenia wyposażenia do transportu
+            update_transport_event: Edytowanie zdarzenia wyposażenia do transportu
+            equipment_event_transport_create_file: Dodawanie pliku do zdarzenia transportu
+            equipment_event_transport_update_file: Edytowanie pliku do zdarzenia transportu
+            equipment_event_transport_delete_file: Kasowanie pliku zdarzenia transportu
+            profile_user: Profil użytkownika
+
+
 
 
