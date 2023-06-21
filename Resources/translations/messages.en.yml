@@ -90,6 +90,7 @@ owl:
             show_user: Details user
             create_user: New user
             update_user: Edit user
+            bulk_delete_user: Bulk delete user
             show_history_route: History route
             list_permissions_assign_to_user: List permissions assigned to user
             assign_permission_to_user: Assigning permissions to user

@@ -103,6 +103,7 @@ owl:
             show_user: Szczegóły użytkownika
             create_user: Dodawanie użytkownika
             update_user: Edycja użytkownika
+            bulk_delete_user: Usuwanie wielu użytkowników
             show_history_route: Historia akcji
             list_permissions_assign_to_user: Lista uprawnień przypisanych do użytkownika
             assign_permission_to_user: Przypisywanie uprawnień do użytkownika
