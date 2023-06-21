@@ -7,6 +7,9 @@ owl_admin_dashboard:
     defaults:
         _controller: owl.controller.admin.dashboard::indexAction
 
+owl_admin_profile:
+    resource: "@OwlAdminBundle/Resources/config/routing/profile.yml"
+
 owl_admin_suggestion:
     resource: "@OwlAdminBundle/Resources/config/routing/suggestion.yml"
 

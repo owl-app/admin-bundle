@@ -3,11 +3,11 @@
     <span>{{ app.user.displayName|default(app.user.email) }}</span>
     <i class="dropdown icon"></i>
     <div class="menu">
-        <a href="{{ path('owl_admin_admin_user_update', {'id': app.user.id}) }}" class="item">
+        <a href="{{ path('owl_admin_profile_update') }}" data-turbo-method="GET" id="owl-profile-button" class="item">
             <i class="user icon"></i>
-            {{ 'owl.ui.my_account'|trans }}
+            {{ 'owl.ui.user_profile'|trans }}
         </a>
-        <a href="{{ path('owl_admin_logout') }}" data-turbo-method="GET" id="sylius-logout-button" class="item">
+        <a href="{{ path('owl_admin_logout') }}" data-turbo-method="GET" id="owl-logout-button" class="item">
             <i class="sign out icon"></i>
             {{ 'owl.ui.logout'|trans }}
         </a>
