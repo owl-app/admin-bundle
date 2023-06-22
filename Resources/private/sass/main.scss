@@ -63,4 +63,9 @@
     text-align: right;
     margin-bottom: 1rem;
     padding-right: 10px;
+
+    .active {
+        border-bottom: 1px solid #1abb9c;
+        padding-bottom: 2px;
+    }
 }

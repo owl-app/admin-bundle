@@ -22,7 +22,7 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
                     'id' => $options['equipment']->getId()
                 ]
             ])
-            ->setLabel('owl.ui.event_equipment');
+            ->setLabel('owl.ui.equipment_events');
     }
 
     public function addGridMenu(EquipmentAddOnMenuEvent $event)

@@ -9,7 +9,7 @@ owl_admin_equipment_show_event_index:
             grid: owl_admin_equipment_event
             template: "@OwlAdmin/Equipment/show.html.twig"
             vars:
-                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                order_menu: ['details', 'refueling_equipment', 'event_equipment']
                 tab: event_equipment
                 referer: true
                 permission:

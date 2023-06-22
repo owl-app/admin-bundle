@@ -46,16 +46,6 @@ final class EquipmentShowMenuBuilder
 
             ->setLabel('owl.ui.details');
 
-        $menu
-            ->addChild('history_equipment')
-            ->setAttribute('route', [
-                'path' => 'owl_admin_equipment_show_history_index',
-                'params' => [
-                    'id' => $options['equipment']->getId()
-                ]
-            ])
-            ->setLabel('owl.ui.history_equipment');
-
         $this->eventDispatcher->dispatch(
             new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
             self::EVENT_ADDON_ALL_CATEGORIES

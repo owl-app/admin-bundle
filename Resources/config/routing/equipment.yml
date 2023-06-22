@@ -91,27 +91,9 @@ owl_admin_equipment_show_details:
             permission: true
             template: "@OwlAdmin/Equipment/show.html.twig"
             vars:
-                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
+                order_menu: ['details', 'refueling_equipment', 'event_equipment']
                 permission:
                     group: equipment
                     description: owl.ui.permission.show_equipment
-
-owl_admin_equipment_show_history_index:
-    path: /equipments/{id}/history
-    methods: [GET]
-    defaults:
-        _controller: owl.controller.action.list_resource_with_parent.equipment.history_equipment_location
-        _sylius:
-            section: admin
-            permission: true
-            grid: owl_admin_equipment_history
-            template: "@OwlAdmin/Equipment/show.html.twig"
-            vars:
-                order_menu: ['details', 'history_equipment', 'refueling_equipment', 'event_equipment']
-                tab: history_equipment
-                referer: true
-                permission:
-                    group: equipment
-                    description: owl.ui.permission.show_equipment_history_list
 
 

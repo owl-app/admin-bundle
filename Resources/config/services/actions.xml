@@ -13,5 +13,25 @@
             <tag name="owl.controller.action" alias="owl.notification" />
         </service>
 
+        <service id="owl.controller.action.list_resource_with_parent.equipment.equipment_event" class="Owl\Bundle\AdminBundle\Controller\Action\ListResourceWithParentAction">
+            <argument type="string">equipment</argument>
+            <argument type="service" id="owl.repository.equipment" />
+            <argument type="service" id="sylius.resource_controller.resources_collection_provider" />
+            <argument type="service" id="owl.resource_controller.orm.item_provider" />
+            <argument type="service" id="sylius.resource_controller.request_configuration_factory"/>
+            <argument type="service" id="sylius.resource_controller.view_handler" />
+            <tag name="owl.controller.action" alias="owl.equipment_event" />
+        </service>
+
+        <service id="owl.controller.action.list_resource_with_parent.equipment.equipment_refueling" class="Owl\Bundle\AdminBundle\Controller\Action\ListResourceWithParentAction">
+            <argument type="string">equipment</argument>
+            <argument type="service" id="owl.repository.equipment" />
+            <argument type="service" id="sylius.resource_controller.resources_collection_provider" />
+            <argument type="service" id="owl.resource_controller.orm.item_provider" />
+            <argument type="service" id="sylius.resource_controller.request_configuration_factory"/>
+            <argument type="service" id="sylius.resource_controller.view_handler" />
+            <tag name="owl.controller.action" alias="owl.equipment_refueling" />
+        </service>
+
     </services>
 </container>

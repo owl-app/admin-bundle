@@ -134,7 +134,6 @@ owl:
             update_equipment: Edit equipment
             delete_equipment: Delete equipment
             get_equipment_by_name: Equipment search by name
-            history_equipment: Equipment history in view
             location: Locations
             list_locations: List locations
             show_location: Show locations

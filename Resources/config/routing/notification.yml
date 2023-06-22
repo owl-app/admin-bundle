@@ -77,7 +77,7 @@ owl_admin_notification_create:
                     group: notification
                     description: owl.ui.permission.create_notification
 
-owl_admin_notification_show:
+owl_admin_notification_show_details:
     path: /notifications/{id}
     methods: [GET]
     defaults:
@@ -90,6 +90,30 @@ owl_admin_notification_show:
                 permission:
                     group: notification
                     description: owl.ui.permission.show_notification
+
+owl_admin_notification_show_accepted_index:
+    path: /notifications/{id}/accepted
+    methods: [GET]
+    defaults:
+        _controller: owl.controller.notification_accepted::indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: owl_admin_notification_accepted
+            template: "@OwlAdmin/Notification/show.html.twig"
+            parents:
+                - 
+                    resource: owl.notification
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $id
+            vars:
+                tab: confirmation_history
+                referer: true
+                permission:
+                    group: notification
+                    description: owl.ui.permission.show_notification_accepted
 
 owl_admin_notification_details:
     path: /notification/details/{id}

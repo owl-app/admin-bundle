@@ -149,7 +149,6 @@ owl:
             update_equipment: Edycja wyposażenia
             delete_equipment: Usuwanie wyposażenia
             get_equipment_by_name: Wyszukiwanie wyposażenia po nazwie
-            history_equipment: Historia wyposażenia w widoku
             location: Lokalizacje
             list_locations: Lista lokalizacji
             show_location: Widok lokalizacji

@@ -9,6 +9,7 @@ imports:
     - { resource: "@OwlAdminBundle/Resources/config/grids/equipment.yml" }
     - { resource: "@OwlAdminBundle/Resources/config/grids/equipment_category.yml" }
     - { resource: "@OwlAdminBundle/Resources/config/grids/notification.yml" }
+    - { resource: "@OwlAdminBundle/Resources/config/grids/notification/notification_accepted.yml" }
     - { resource: "@OwlAdminBundle/Resources/config/grids/equipment_attribute.yml" }
     - { resource: "@OwlAdminBundle/Resources/config/grids/equipment_event.yml" }
     - { resource: "@OwlAdminBundle/Resources/config/grids/equipment_refueling.yml" }
@@ -404,4 +405,34 @@ owl_ui:
             blocks:
                 content:
                     template: "@OwlAdmin/Company/Show/Tab/_user.html.twig"
+                    priority: 20
+        #NOTIFICATION
+        owl.admin.notification.show.content:
+            blocks:
+                header:
+                    template: "@OwlAdmin/Notification/Show/_headerWidget.html.twig"
+                    priority: 40
+                breadcrumb:
+                    template: "@OwlAdmin/Notification/Show/_breadcrumb.html.twig"
+                    priority: 30
+                content:
+                    template: "@OwlAdmin/Notification/Show/_contentWidget.html.twig"
+                    priority: 10
+        owl.admin.notification.show.header.content:
+            blocks:
+                content:
+                    template: "@OwlAdmin/Notification/Show/_header.html.twig"
+                    priority: 20
+                menu:
+                    template: "@OwlAdmin/Notification/Show/_headerMenu.html.twig"
+                    priority: 10
+        owl.admin.notification.show.tab_details:
+            blocks:
+                content:
+                    template: "@OwlAdmin/Notification/Show/Tab/_details.html.twig"
+                    priority: 20
+        owl.admin.notification.show.tab_confirmation_history:
+            blocks:
+                content:
+                    template: "@OwlAdmin/Notification/Show/Tab/_confirmation_history.html.twig"
                     priority: 20
