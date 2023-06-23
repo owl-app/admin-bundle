@@ -18,6 +18,10 @@ const renderContent = (data, isBulk) => {
 
     $("#ajax-modal").modal("refresh");
 
+    if($("#ajax-modal .ui.dropdown").length) {
+      $('#ajax-modal .ui.dropdown').dropdown();
+    }
+
     if($('#ajax-modal').find('.tinymce').length) {
       initTinyMCE();
     }

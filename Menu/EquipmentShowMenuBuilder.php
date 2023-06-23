@@ -43,26 +43,20 @@ final class EquipmentShowMenuBuilder
                     'id' => $options['equipment']->getId()
                 ]
             ])
-
             ->setLabel('owl.ui.details');
 
-        $this->eventDispatcher->dispatch(
-            new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
-            self::EVENT_ADDON_ALL_CATEGORIES
-        );
-
-        if ($category && $categoryCode) {
+        foreach($category->getAddons() as $addon) {
             $this->eventDispatcher->dispatch(
                 new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
-                $this->addOnEvents[$categoryCode]['show']
+                $this->addOnEvents[$addon]['show']
             );
-        }
-
-        if ($options['order_menu']) {
-            $this->eventDispatcher->dispatch(
-                new OrderMenuEvent($this->factory, $menu, $options['order_menu']),
-                OrderMenuEvent::EVENT_NAME
-            );
+    
+            if (isset($options['order_menu'])) {
+                $this->eventDispatcher->dispatch(
+                    new OrderMenuEvent($this->factory, $menu, $options['order_menu']),
+                    OrderMenuEvent::EVENT_NAME
+                );
+            }
         }
 
         return $menu;

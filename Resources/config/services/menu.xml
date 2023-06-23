@@ -5,11 +5,17 @@
         <defaults public="true" />
 
         <service id="owl.admin.menu.listener.equipment_addon.refueling" class="Owl\Bundle\AdminBundle\EventListener\EquipmentRefuelingMenuListener">
-            <tag name="owl.equipment.listener.addon_menu" category-code="transport" priority="256" />
+            <argument type="service" id="security.authorization_checker" />
+            <tag name="owl.equipment.listener.addon_menu" category-code="refueling" priority="256" />
         </service>
 
         <service id="owl.admin.menu.listener.equipment_addon.event" class="Owl\Bundle\AdminBundle\EventListener\EquipmentEventMenuListener">
-            <tag name="owl.equipment.listener.addon_menu" category-code="all" priority="256"/>
+            <argument type="service" id="security.authorization_checker" />
+            <tag name="owl.equipment.listener.addon_menu" category-code="event" priority="256"/>
+        </service>
+
+        <service id="owl.admin.menu.subscriber.order" class="Owl\Bundle\AdminBundle\EventSubscriber\OrderMenuSubscriber">
+            <tag name="kernel.event_subscriber" />
         </service>
 
         <service id="owl.admin.menu_builder.main" class="Owl\Bundle\AdminBundle\Menu\MainMenuBuilder">
@@ -36,7 +42,6 @@
         <service id="owl.admin.menu_builder.equipment_grid_addon" class="Owl\Bundle\AdminBundle\Menu\EquipmentGridAddOnMenuBuilder">
             <argument type="service" id="knp_menu.factory" />
             <argument type="service" id="event_dispatcher" />
-            <argument type="service" id="owl.equipment_category_code_provider" />
             <argument>%owl.admin.menu.equipment_addon.events%</argument>
             <tag name="knp_menu.menu_builder" method="createMenu" alias="owl.admin.equipment_grid_addon" />
         </service>
