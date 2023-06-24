@@ -31,8 +31,15 @@ owl_admin_equipment_file_create:
             factory:
                 method: createForSubjectWithUploader
                 arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.equipment').findOneById($equipmentId)))"
+                    - equipment
                     - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.equipment
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $equipmentId
             vars:
                 permission:
                     group: equipment
@@ -47,18 +54,19 @@ owl_admin_equipment_file_update:
             section: admin
             permission: true
             template: "@OwlAdmin/Crud/Ajax/update.html.twig"
-            factory:
-                method: createForSubjectWithUploader
-                arguments:
-                    - "expr:isGranted(notFoundOnNull(service('owl.repository.equipment').findOneById($equipmentId)))"
-                    - "expr:service('owl.context.admin_user').getUser()"
+            parents:
+                - 
+                    resource: owl.equipment
+                    repository: 
+                        method: find
+                        arguments: 
+                            id: $equipmentId
             vars:
                 redirect:
                     save:
                         route: owl_admin_equipment_update
                         parameters: 
                             id: $equipmentId
-                        hash: files
                 form:
                     ajax: true
                     actions: 
