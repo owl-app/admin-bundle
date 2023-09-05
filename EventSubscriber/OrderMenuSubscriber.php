@@ -9,6 +9,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class OrderMenuSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{'owl.admin.menu.order': 'setOrder'}
+     */
     public static function getSubscribedEvents()
     {
         return [
@@ -16,7 +21,7 @@ final class OrderMenuSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function setOrder(OrderMenuEvent $event)
+    public function setOrder(OrderMenuEvent $event): void
     {
         $menu = $event->getMenu();
         $order = $event->getOrder();

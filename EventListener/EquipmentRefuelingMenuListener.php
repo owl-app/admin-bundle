@@ -14,6 +14,9 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
     {
     }
 
+    /**
+     * @return void
+     */
     public function addTabs(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
@@ -32,6 +35,9 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
         }
     }
 
+    /**
+     * @return void
+     */
     public function addGridMenu(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();

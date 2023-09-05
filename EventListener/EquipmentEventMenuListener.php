@@ -9,6 +9,9 @@ use Owl\Component\Core\Equipment\Menu\EquipmentAddOnMenuListenerInteface;
 
 class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
 {
+    /**
+     * @return void
+     */
     public function addTabs(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
@@ -25,6 +28,9 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
             ->setLabel('owl.ui.equipment_events');
     }
 
+    /**
+     * @return void
+     */
     public function addGridMenu(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();

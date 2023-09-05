@@ -31,6 +31,11 @@ final class NotificationWidgetExtension extends AbstractExtension
         $this->checkFrequency = $checkFrequency;
     }
 
+    /**
+     * @return TwigFunction[]
+     *
+     * @psalm-return list{TwigFunction}
+     */
     public function getFunctions(): array
     {
         return [
