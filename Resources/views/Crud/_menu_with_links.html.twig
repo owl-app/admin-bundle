@@ -20,11 +20,14 @@
     {%- if classes is not empty %}
         {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
     {%- endif %}
-    <a 
-        class="item{% if attributes.class is defined %} {{ attributes.class }}{% endif %}" 
-        data-tab="{{ item.name }}"
-        href="{{ path(attributes.route.path, attributes.route.params) }}"
-    >
-        {{ item.label|trans }}
-    </a>
+
+    {% if item.extras.route is defined %}
+        <a 
+            class="item{% if attributes.class is defined %} {{ attributes.class }}{% endif %}" 
+            data-tab="{{ item.name }}"
+            href="{{ path(item.extras.route.path, item.extras.route.params) }}"
+        >
+            {{ item.label|trans }}
+        </a>
+    {% endif %}
 {% endblock %}

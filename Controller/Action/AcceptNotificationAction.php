@@ -7,9 +7,10 @@ namespace Owl\Bundle\AdminBundle\Controller\Action;
 use FOS\RestBundle\View\View;
 use Owl\Bridge\SyliusResource\Controller\AbstractResourceAction;
 use Owl\Component\Core\Context\AdminUserContextInterface;
+use Owl\Component\Core\Factory\NotificationAcceptedFactoryInterface;
+use Owl\Component\Core\Repository\NotificationRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * @property NotificationRepositoryInterface $repository
+ */
 final class AcceptNotificationAction extends AbstractResourceAction
 {
     public function __construct(
         private AdminUserContextInterface $adminUserContext,
         private RepositoryInterface $notificationAcceptedRepository,
-        private FactoryInterface $notificationAcceptedFactory,
+        private NotificationAcceptedFactoryInterface $notificationAcceptedFactory,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,
         private ViewHandlerInterface $viewHandler,
     ) {

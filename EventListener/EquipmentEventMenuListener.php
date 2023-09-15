@@ -16,12 +16,15 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
 
         $menu
             ->addChild('event_equipment')
-            ->setAttribute('route', [
-                'path' => 'owl_admin_equipment_show_event_index',
-                'params' => [
-                    'id' => $options['equipment']->getId(),
+            ->setExtra(
+                'route',
+                [
+                    'path' => 'owl_admin_equipment_show_event_index',
+                    'params' => [
+                        'id' => $options['equipment']->getId(),
+                    ],
                 ],
-            ])
+            )
             ->setLabel('owl.ui.equipment_events');
     }
 
@@ -32,34 +35,33 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
 
         $menuEvent = $menu->addChild('equipment_events')
             ->setLabel('owl.ui.manage_events')
-            ->setExtra('icon', 'cubes')
-        ;
+            ->setExtra('icon', 'cubes');
 
         $menuEvent
             ->addChild('list_events')
-            ->setExtra('icon', 'list')
-            ->setAttribute('route', [
-                'path' => 'owl_admin_equipment_show_event_index',
-                'params' => [
-                    'id' => $options['id'],
+            ->setExtras([
+                'icon' => 'list',
+                'route' => [
+                    'path' => 'owl_admin_equipment_show_event_index',
+                    'params' => [
+                        'id' => $options['id'],
+                    ],
                 ],
             ])
-
-            ->setLabel('owl.ui.list_events')
-        ;
+            ->setLabel('owl.ui.list_events');
 
         $menuEvent
             ->addChild('create_event')
-            ->setExtra('icon', 'plus')
-            ->setExtra('modal', true)
-            ->setAttribute('route', [
-                'path' => 'owl_admin_equipment_event_create',
-                'params' => [
-                    'id' => $options['id'],
+            ->setExtras([
+                'modal' => true,
+                'icon' => 'plus',
+                'route' => [
+                    'path' => 'owl_admin_equipment_event_create',
+                    'params' => [
+                        'id' => $options['id'],
+                    ],
                 ],
             ])
-
-            ->setLabel('owl.ui.create_event')
-        ;
+            ->setLabel('owl.ui.create_event');
     }
 }

@@ -32,7 +32,7 @@
     {%- endif %}
     <a 
         class="item{% if attributes.class is defined %} {{ attributes.class }}{% endif %}{% if extras.modal is defined %} ajax-modal-button{% endif %}" 
-        {% if extras.modal is defined %} data-url{% else %} href{% endif %}="{{ path(attributes.route.path, attributes.route.params) }}" 
+        {% if extras.modal is defined %} data-url{% else %} href{% endif %}="{{ path(extras.route.path, extras.route.params) }}" 
     >
         {% if extras.icon is defined %}<i class="{{ extras.icon }} icon"></i> {% endif %}
         {{ item.label|trans }}

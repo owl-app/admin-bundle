@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Owl\Bundle\AdminBundle\Controller\Action;
 
+use Doctrine\ORM\EntityRepository;
 use Owl\Bridge\SyliusResource\Controller\AbstractResourceAction;
 use Owl\Bridge\SyliusResource\Doctrine\Orm\ItemProviderInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourcesCollectionProviderInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +20,7 @@ final class ListResourceWithParentAction extends AbstractResourceAction
 {
     public function __construct(
         private string $parentName,
-        private RepositoryInterface $repositoryParent,
+        private EntityRepository $repositoryParent,
         private ResourcesCollectionProviderInterface $resourcesCollectionProvider,
         private ItemProviderInterface $itemProvider,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,

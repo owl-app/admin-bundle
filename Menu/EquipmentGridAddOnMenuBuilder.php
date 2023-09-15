@@ -39,7 +39,7 @@ final class EquipmentGridAddOnMenuBuilder
                 $this->addOnEvents[$addon]['grid'],
             );
 
-            if ($options['order']) {
+            if (isset($options['order'])) {
                 $this->eventDispatcher->dispatch(
                     new OrderMenuEvent($this->factory, $menu, $options['order']),
                     OrderMenuEvent::EVENT_NAME,

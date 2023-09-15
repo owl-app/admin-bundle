@@ -22,12 +22,15 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
         if ($this->authorizationChecker->isGranted('owl_admin_equipment_show_refueling_index')) {
             $menu
                 ->addChild('refueling_equipment')
-                ->setAttribute('route', [
-                    'path' => 'owl_admin_equipment_show_refueling_index',
-                    'params' => [
-                        'id' => $options['equipment']->getId(),
+                ->setExtra(
+                    'route',
+                    [
+                        'path' => 'owl_admin_equipment_show_refueling_index',
+                        'params' => [
+                            'id' => $options['equipment']->getId(),
+                        ],
                     ],
-                ])
+                )
                 ->setLabel('owl.ui.refueling_equipment');
         }
     }
@@ -47,11 +50,13 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
             if ($isGrantedIndexRefueling) {
                 $menuRefueling
                     ->addChild('list_refuelings')
-                    ->setExtra('icon', 'list')
-                    ->setAttribute('route', [
-                        'path' => 'owl_admin_equipment_show_refueling_index',
-                        'params' => [
-                            'id' => $options['id'],
+                    ->setExtras([
+                        'icon' => 'list',
+                        'route' => [
+                            'path' => 'owl_admin_equipment_show_refueling_index',
+                            'params' => [
+                                'id' => $options['id'],
+                            ],
                         ],
                     ])
                     ->setLabel('owl.ui.list_refuelings');
@@ -60,12 +65,14 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
             if ($isGrantedCreateRefueling) {
                 $menuRefueling
                     ->addChild('create_refueling')
-                    ->setExtra('icon', 'plus')
-                    ->setExtra('modal', true)
-                    ->setAttribute('route', [
-                        'path' => 'owl_admin_equipment_refueling_create',
-                        'params' => [
-                            'id' => $options['id'],
+                    ->setExtras([
+                        'modal' => true,
+                        'icon' => 'plus',
+                        'route' => [
+                            'path' => 'owl_admin_equipment_refueling_create',
+                            'params' => [
+                                'id' => $options['id'],
+                            ],
                         ],
                     ])
                     ->setLabel('owl.ui.create_refueling');

@@ -8,6 +8,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Owl\Bundle\AdminBundle\Event\EquipmentAddOnMenuEvent;
 use Owl\Bundle\AdminBundle\Event\OrderMenuEvent;
+use Owl\Component\Core\Model\EquipmentCategoryInterface;
 use Owl\Component\Core\Model\EquipmentInterface;
 use Owl\Component\Core\Provider\EquipmentCategoryCodeProviderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -32,12 +33,12 @@ final class EquipmentShowMenuBuilder
             return $menu;
         }
 
+        /** @var EquipmentCategoryInterface $category */
         $category = $options['equipment']->getCategory();
-        $categoryCode = $category ? $this->equipmentCategoryCodeProvider->getCode($category->getId()) : null;
 
         $menu
             ->addChild('details')
-            ->setAttribute('route', [
+            ->setExtra('route', [
                 'path' => 'owl_admin_equipment_show_details',
                 'params' => [
                     'id' => $options['equipment']->getId(),
