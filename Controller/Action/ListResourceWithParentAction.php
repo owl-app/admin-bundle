@@ -9,7 +9,6 @@ use Owl\Bridge\SyliusResource\Doctrine\Orm\ItemProviderInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourcesCollectionProviderInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\ResourceActions;
@@ -25,8 +24,9 @@ final class ListResourceWithParentAction extends AbstractResourceAction
         private ResourcesCollectionProviderInterface $resourcesCollectionProvider,
         private ItemProviderInterface $itemProvider,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,
-        private ViewHandlerInterface $viewHandler
-    ) {}
+        private ViewHandlerInterface $viewHandler,
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -51,7 +51,7 @@ final class ListResourceWithParentAction extends AbstractResourceAction
     {
         $resource = $this->itemProvider->get($this->repositoryParent, ['id' => $request->attributes->get('id')]);
 
-        if (!$request->attributes->has('id') || null === $resource ) {
+        if (!$request->attributes->has('id') || null === $resource) {
             throw new NotFoundHttpException(sprintf('The %s has not been found', $this->parentName));
         }
 

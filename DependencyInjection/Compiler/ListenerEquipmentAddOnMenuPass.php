@@ -19,21 +19,21 @@ final class ListenerEquipmentAddOnMenuPass implements CompilerPassInterface
                 throw new \InvalidArgumentException('Tagged attribute type needs to have `category_code` attributes.');
             }
 
-            $showEvent = 'owl.admin.menu.show.equipment_addon.'.$attribute['category_code'];
-            $gridEvent = 'owl.admin.menu.grid.equipment_addon.'.$attribute['category_code'];
+            $showEvent = 'owl.admin.menu.show.equipment_addon.' . $attribute['category_code'];
+            $gridEvent = 'owl.admin.menu.grid.equipment_addon.' . $attribute['category_code'];
 
             $listener = $container->getDefinition($id);
             $listener->clearTags();
             $listener->addTag('kernel.event_listener', [
                 'event' => $showEvent,
                 'method' => 'addTabs',
-                'priority' => $attribute['priority'] ?? 0
+                'priority' => $attribute['priority'] ?? 0,
             ]);
 
             $listener->addTag('kernel.event_listener', [
                 'event' => $gridEvent,
                 'method' => 'addGridMenu',
-                'priority' => $attribute['priority'] ?? 0
+                'priority' => $attribute['priority'] ?? 0,
             ]);
 
             $addOnMenuEvents[$attribute['category_code']] = [

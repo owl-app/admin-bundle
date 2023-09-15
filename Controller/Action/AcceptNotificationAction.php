@@ -24,7 +24,7 @@ final class AcceptNotificationAction extends AbstractResourceAction
         private RepositoryInterface $notificationAcceptedRepository,
         private FactoryInterface $notificationAcceptedFactory,
         private RequestConfigurationFactoryInterface $requestConfigurationFactory,
-        private ViewHandlerInterface $viewHandler
+        private ViewHandlerInterface $viewHandler,
     ) {
     }
 
@@ -51,7 +51,7 @@ final class AcceptNotificationAction extends AbstractResourceAction
         $notification = $this->repository->findNotAccepted(
             (int) $request->attributes->get('id'),
             $this->adminUserContext->getUser(),
-            $this->adminUserContext->getRoleCanonicalName()
+            $this->adminUserContext->getRoleCanonicalName(),
         );
 
         if (!$request->attributes->has('id') || null === $notification) {

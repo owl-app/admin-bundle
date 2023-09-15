@@ -9,9 +9,6 @@ use Owl\Component\Core\Equipment\Menu\EquipmentAddOnMenuListenerInteface;
 
 class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
 {
-    /**
-     * @return void
-     */
     public function addTabs(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
@@ -22,15 +19,12 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
             ->setAttribute('route', [
                 'path' => 'owl_admin_equipment_show_event_index',
                 'params' => [
-                    'id' => $options['equipment']->getId()
-                ]
+                    'id' => $options['equipment']->getId(),
+                ],
             ])
             ->setLabel('owl.ui.equipment_events');
     }
 
-    /**
-     * @return void
-     */
     public function addGridMenu(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
@@ -47,8 +41,8 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
             ->setAttribute('route', [
                 'path' => 'owl_admin_equipment_show_event_index',
                 'params' => [
-                    'id' => $options['id']
-                ]
+                    'id' => $options['id'],
+                ],
             ])
 
             ->setLabel('owl.ui.list_events')
@@ -61,8 +55,8 @@ class EquipmentEventMenuListener implements EquipmentAddOnMenuListenerInteface
             ->setAttribute('route', [
                 'path' => 'owl_admin_equipment_event_create',
                 'params' => [
-                    'id' => $options['id']
-                ]
+                    'id' => $options['id'],
+                ],
             ])
 
             ->setLabel('owl.ui.create_event')

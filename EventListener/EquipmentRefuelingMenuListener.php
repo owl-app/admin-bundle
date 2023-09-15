@@ -14,30 +14,24 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
     {
     }
 
-    /**
-     * @return void
-     */
     public function addTabs(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
         $options = $event->getOptions();
 
-        if($this->authorizationChecker->isGranted('owl_admin_equipment_show_refueling_index')) {
+        if ($this->authorizationChecker->isGranted('owl_admin_equipment_show_refueling_index')) {
             $menu
                 ->addChild('refueling_equipment')
                 ->setAttribute('route', [
                     'path' => 'owl_admin_equipment_show_refueling_index',
                     'params' => [
-                        'id' => $options['equipment']->getId()
-                    ]
+                        'id' => $options['equipment']->getId(),
+                    ],
                 ])
                 ->setLabel('owl.ui.refueling_equipment');
         }
     }
 
-    /**
-     * @return void
-     */
     public function addGridMenu(EquipmentAddOnMenuEvent $event)
     {
         $menu = $event->getMenu();
@@ -45,25 +39,25 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
         $isGrantedIndexRefueling = $this->authorizationChecker->isGranted('owl_admin_equipment_show_refueling_index');
         $isGrantedCreateRefueling = $this->authorizationChecker->isGranted('owl_admin_equipment_refueling_create');
 
-        if($isGrantedIndexRefueling || $isGrantedCreateRefueling) {
+        if ($isGrantedIndexRefueling || $isGrantedCreateRefueling) {
             $menuRefueling = $menu->addChild('equipment_refuelings')
                 ->setLabel('owl.ui.manage_refueling')
                 ->setExtra('icon', 'cubes');
 
-            if($isGrantedIndexRefueling) {
+            if ($isGrantedIndexRefueling) {
                 $menuRefueling
                     ->addChild('list_refuelings')
                     ->setExtra('icon', 'list')
                     ->setAttribute('route', [
                         'path' => 'owl_admin_equipment_show_refueling_index',
                         'params' => [
-                            'id' => $options['id']
-                        ]
+                            'id' => $options['id'],
+                        ],
                     ])
                     ->setLabel('owl.ui.list_refuelings');
             }
 
-            if($isGrantedCreateRefueling) {
+            if ($isGrantedCreateRefueling) {
                 $menuRefueling
                     ->addChild('create_refueling')
                     ->setExtra('icon', 'plus')
@@ -71,12 +65,11 @@ class EquipmentRefuelingMenuListener implements EquipmentAddOnMenuListenerIntefa
                     ->setAttribute('route', [
                         'path' => 'owl_admin_equipment_refueling_create',
                         'params' => [
-                            'id' => $options['id']
-                        ]
+                            'id' => $options['id'],
+                        ],
                     ])
                     ->setLabel('owl.ui.create_refueling');
             }
-
         }
     }
 }

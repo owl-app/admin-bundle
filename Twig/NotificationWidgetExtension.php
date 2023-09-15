@@ -45,7 +45,7 @@ final class NotificationWidgetExtension extends AbstractExtension
                 [
                     'needs_environment' => true,
                     'is_safe' => ['html'],
-                ]
+                ],
             ),
         ];
     }
@@ -57,7 +57,7 @@ final class NotificationWidgetExtension extends AbstractExtension
         }
 
         return $environment->render('@OwlAdmin/Layout/_notification.html.twig', [
-            'frequency' => $this->checkFrequency
+            'frequency' => $this->checkFrequency,
         ]);
     }
 }

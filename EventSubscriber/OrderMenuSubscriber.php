@@ -17,7 +17,7 @@ final class OrderMenuSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            OrderMenuEvent::EVENT_NAME => 'setOrder'
+            OrderMenuEvent::EVENT_NAME => 'setOrder',
         ];
     }
 
@@ -26,8 +26,8 @@ final class OrderMenuSubscriber implements EventSubscriberInterface
         $menu = $event->getMenu();
         $order = $event->getOrder();
 
-        foreach($order as $key => $name) {
-            if(is_null($menu->getChild($name))) {
+        foreach ($order as $key => $name) {
+            if (null === $menu->getChild($name)) {
                 unset($order[$key]);
             }
         }

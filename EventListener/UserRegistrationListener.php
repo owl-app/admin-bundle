@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Owl\Bundle\AdminBundle\EventListener;
 
-use Owl\Component\Core\Model\AdminUserInterface;
 use Owl\Bundle\UserBundle\UserEvents;
+use Owl\Component\Core\Model\AdminUserInterface;
 use Owl\Component\User\Security\Generator\GeneratorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;

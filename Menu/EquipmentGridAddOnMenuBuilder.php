@@ -18,9 +18,8 @@ final class EquipmentGridAddOnMenuBuilder
     public function __construct(
         private FactoryInterface $factory,
         private EventDispatcherInterface $eventDispatcher,
-        private array $addOnEvents
+        private array $addOnEvents,
     ) {
-
     }
 
     public function createMenu(array $options = []): ItemInterface
@@ -37,13 +36,13 @@ final class EquipmentGridAddOnMenuBuilder
         foreach ($category->getAddons() as $addon) {
             $this->eventDispatcher->dispatch(
                 new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
-                $this->addOnEvents[$addon]['grid']
+                $this->addOnEvents[$addon]['grid'],
             );
 
             if ($options['order']) {
                 $this->eventDispatcher->dispatch(
                     new OrderMenuEvent($this->factory, $menu, $options['order']),
-                    OrderMenuEvent::EVENT_NAME
+                    OrderMenuEvent::EVENT_NAME,
                 );
             }
         }

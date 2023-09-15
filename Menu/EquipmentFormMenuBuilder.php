@@ -6,8 +6,6 @@ namespace Owl\Bundle\AdminBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use Owl\Bundle\AdminBundle\Event\EquipmentMenuBuilderEvent;
-use Owl\Component\Core\Model\EquipmentCategoryInterface;
 use Owl\Component\Core\Model\EquipmentInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

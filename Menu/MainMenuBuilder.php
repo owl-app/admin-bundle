@@ -148,7 +148,7 @@ final class MainMenuBuilder
         $isGrantedPermissionRoles = $this->authorizationChecker->isGranted('owl_admin_rbac_role_index');
         $isGrantedPermissionAvailableRoutes = $this->authorizationChecker->isGranted('owl_admin_rbac_permission_availables');
 
-        if ($isGrantedPermissionRoles ||  $isGrantedPermissionAvailableRoutes) {
+        if ($isGrantedPermissionRoles || $isGrantedPermissionAvailableRoutes) {
             $configuration = $menu
                 ->addChild('permission')
                 ->setLabel('owl.menu.admin.main.permission.header')

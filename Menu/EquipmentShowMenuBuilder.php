@@ -20,7 +20,7 @@ final class EquipmentShowMenuBuilder
         private FactoryInterface $factory,
         private EventDispatcherInterface $eventDispatcher,
         private EquipmentCategoryCodeProviderInterface $equipmentCategoryCodeProvider,
-        private array $addOnEvents
+        private array $addOnEvents,
     ) {
     }
 
@@ -40,21 +40,21 @@ final class EquipmentShowMenuBuilder
             ->setAttribute('route', [
                 'path' => 'owl_admin_equipment_show_details',
                 'params' => [
-                    'id' => $options['equipment']->getId()
-                ]
+                    'id' => $options['equipment']->getId(),
+                ],
             ])
             ->setLabel('owl.ui.details');
 
-        foreach($category->getAddons() as $addon) {
+        foreach ($category->getAddons() as $addon) {
             $this->eventDispatcher->dispatch(
                 new EquipmentAddOnMenuEvent($this->factory, $menu, $options),
-                $this->addOnEvents[$addon]['show']
+                $this->addOnEvents[$addon]['show'],
             );
-    
+
             if (isset($options['order_menu'])) {
                 $this->eventDispatcher->dispatch(
                     new OrderMenuEvent($this->factory, $menu, $options['order_menu']),
-                    OrderMenuEvent::EVENT_NAME
+                    OrderMenuEvent::EVENT_NAME,
                 );
             }
         }

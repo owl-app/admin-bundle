@@ -28,7 +28,7 @@ final class AdminBasedLocaleContext implements LocaleContextInterface
         $this->tokenStorage = $tokenStorage;
     }
 
-    public function getLocaleCode():? string
+    public function getLocaleCode(): ?string
     {
         $token = $this->tokenStorage->getToken();
         if (null === $token) {

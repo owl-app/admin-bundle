@@ -7,7 +7,6 @@ namespace Owl\Bundle\AdminBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Owl\Component\Company\Model\CompanyInterface;
-use Owl\Component\Core\Model\ServiceInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class CompanyShowMenuBuilder
@@ -22,7 +21,7 @@ final class CompanyShowMenuBuilder
 
     public function __construct(
         FactoryInterface $factory,
-        EventDispatcherInterface $eventDispatcher
+        EventDispatcherInterface $eventDispatcher,
     ) {
         $this->factory = $factory;
         $this->eventDispatcher = $eventDispatcher;

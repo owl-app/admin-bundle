@@ -18,7 +18,7 @@ final class DashboardController
     public function __construct(
         private SettingStorageInterface $settingStorage,
         private object $templatingEngine,
-        private RouterInterface $router
+        private RouterInterface $router,
     ) {
     }
 
@@ -27,7 +27,7 @@ final class DashboardController
         $settings = $this->settingStorage->getBySectionAndKeys('system', ['description_dashboard']);
 
         return new Response($this->templatingEngine->render('@OwlAdmin/Dashboard/index.html.twig', [
-            'settings' => $settings
+            'settings' => $settings,
         ]));
     }
 }
