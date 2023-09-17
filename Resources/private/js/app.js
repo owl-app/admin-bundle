@@ -24,35 +24,35 @@ import GridComponent from 'sylius/ui/owl-grid';
 
 $(window).off('beforeunload');
 
-import * as Turbo from '@hotwired/turbo';
+// import * as Turbo from '@hotwired/turbo';
  
 var isLoadPage = false;
 
-Turbo.session.adapter.__proto__.visitRequestCompleted = function(visit) {
+// Turbo.session.adapter.__proto__.visitRequestCompleted = function(visit) {
   
-  function isSuccessful(statusCode) {
-    return statusCode >= 200 && statusCode < 300;
-  }
+//   function isSuccessful(statusCode) {
+//     return statusCode >= 200 && statusCode < 300;
+//   }
 
-  if (visit.response) {
-    const { statusCode, responseHTML } = visit.response
-    const snapshot = Turbo.PageSnapshot.fromHTMLString(responseHTML);
-    visit.render(async () => {
-      if (visit.view.renderPromise) await visit.view.renderPromise
-      if (isSuccessful(statusCode) && responseHTML != null) {
-        await visit.view.renderPage(snapshot, false, visit.willRender)
-        visit.adapter.visitRendered(visit)
-        visit.complete()
-      } else {
-        await visit.view.renderError(snapshot)
-        visit.adapter.visitRendered(visit)
-        visit.fail()
-      }
+//   if (visit.response) {
+//     const { statusCode, responseHTML } = visit.response
+//     const snapshot = Turbo.PageSnapshot.fromHTMLString(responseHTML);
+//     visit.render(async () => {
+//       if (visit.view.renderPromise) await visit.view.renderPromise
+//       if (isSuccessful(statusCode) && responseHTML != null) {
+//         await visit.view.renderPage(snapshot, false, visit.willRender)
+//         visit.adapter.visitRendered(visit)
+//         visit.complete()
+//       } else {
+//         await visit.view.renderError(snapshot)
+//         visit.adapter.visitRendered(visit)
+//         visit.fail()
+//       }
 
-      visit.view.snapshotCache.put(new URL(visit.location.href), snapshot)
-    })
-  }
-}
+//       visit.view.snapshotCache.put(new URL(visit.location.href), snapshot)
+//     })
+//   }
+// }
 
 document.addEventListener('turbo:before-cache',  (event) => {
   event.preventDefault();
