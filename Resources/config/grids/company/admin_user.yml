@@ -5,6 +5,8 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%owl.model.admin_user.class%"
+                    repository:
+                        method: findByRoleUser
             sorting:
                 createdAt: desc
             fields:

@@ -1,0 +1,8 @@
+{% if data is defined and data is not null %}
+    {% for company in data %}
+        {{ company.name }}
+        {% if not loop.last %} <br /> {% endif %}
+    {% endfor %}
+{% else %}
+Brak
+{% endif %}

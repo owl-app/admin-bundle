@@ -14,8 +14,8 @@
             <div class="field">
                 {{ form_row(form.role) }}
             </div>
-            <div class="field">
-                {{ form_row(form.company) }}
+            <div class="field field-admin-user-companies" style="{{ form.vars.value.role.setting is defined and form.vars.value.role.setting.canonicalName == 'ROLE_ADMIN_SYSTEM' ? 'display: none' : 'display: block' }}">
+                {{ form_row(form.companies, {'attr': {'class': 'ui fluid search selection dropdown'}}) }}
             </div>
         </div>
     </div>

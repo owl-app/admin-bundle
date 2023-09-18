@@ -12,12 +12,11 @@ sylius_grid:
                     type: string
                     label: owl.ui.user_display_name
                     sortable: ~
-                company:
+                companies:
                     type: twig
-                    label: owl.ui.company
-                    sortable: company.name
+                    label: owl.ui.companies
                     options:
-                        template: "@OwlAdmin/Grid/Field/company.html.twig"
+                        template: "@OwlAdmin/Grid/Field/companies.html.twig"
                 email:
                     type: string
                     label: owl.ui.email
@@ -100,12 +99,6 @@ sylius_grid:
                     type: string
                     label: owl.ui.user_display_name
                     sortable: ~
-                company:
-                    type: twig
-                    label: owl.ui.company
-                    sortable: company.name
-                    options:
-                        template: "@OwlAdmin/Grid/Field/company.html.twig"
                 email:
                     type: string
                     label: owl.ui.email
