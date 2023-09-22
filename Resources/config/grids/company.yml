@@ -48,7 +48,7 @@ sylius_grid:
                         type: modal
                         label: owl.ui.create
                         options:
-                            button: primary
+                            button: primary create-modal
                             icon: plus
                             link:
                                 route: owl_admin_company_create
